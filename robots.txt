@@ -1,0 +1,20 @@
+# Elite Electrical Contractors — crawl rules
+# Static site: every page is meant to be indexed. Nothing is disallowed.
+
+User-agent: *
+Allow: /
+
+# AI answer engines are welcome — the FAQ blocks are written for them.
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://eliteelectricswfl.com/sitemap.xml
