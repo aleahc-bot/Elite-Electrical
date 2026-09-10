@@ -454,7 +454,13 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
 }
 
 /* ---- intro copy + long-form prose blocks added with the SEO pass ---- */
-.page-intro { padding: clamp(34px,4.5vw,54px) 0 0; }
+/* Padded on both sides: on the homepage this band sits between the stats card
+   and the "Why Elite" section, where the background colour changes, so the last
+   line needs clearance from that edge. */
+.page-intro { padding: clamp(34px,4.5vw,54px) 0; }
+/* On the service pages the FAQ follows immediately and brings its own 60px, so
+   trim the doubled gap. */
+.page-intro + .faq-section { padding-top: 20px; }
 .page-intro p {
   max-width: 78ch; margin: 0;
   font-size: clamp(15.5px,1.6vw,17px); line-height: 1.75; color: var(--muted);
