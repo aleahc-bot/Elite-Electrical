@@ -453,6 +453,47 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
   .faq-icon { transition: none; }
 }
 
+/* ---- the hidden attribute must actually hide ----
+   contact.html ships the thank-you panel as <div class="form-sent" hidden>, and
+   js/contact.js reveals it by clearing that attribute after a successful send.
+   But contact.css sets
+
+       .form-sent { display: flex }
+
+   and an author display declaration beats the browser's own [hidden] rule, so
+   the panel was showing on page load — "Thank you for submitting" sat under the
+   form before anyone had submitted anything. (.form-err already had a
+   .form-err[hidden] guard; .form-sent was missed.)
+
+   Fixing it globally rather than for this one class, so the next element built
+   with hidden cannot hit the same trap. Nothing on the site uses hidden and
+   expects to stay visible — only #formSent and #formErr use it at all. */
+[hidden] { display: none !important; }
+
+/* ---- mobile menu: white state, Services submenu ----
+   The mobile menu has two looks. Over the hero the header is transparent and the
+   panel is dark (.menu background: --ink-blue, links #fff). Once the page is
+   scrolled the header gains .scrolled and the panel turns white, and the page
+   stylesheets recolour the top-level links for it:
+
+       header.scrolled .menu a { color: var(--muted) }
+
+   The Services submenu was never given that second state. Its links are pinned
+   at rgba(255,255,255,.82) and its left rule at rgba(255,255,255,.18), so on the
+   white panel all seven service links were white-on-white — invisible, leaving a
+   ~500px blank gap between "Services" and "New Construction". The left rule was
+   invisible too.
+
+   These selectors carry header.scrolled and .menu, so they out-specify the page
+   rule (0,4,2 against 0,3,1) and win no matter which stylesheet loads first.
+   The dark state is untouched. */
+@media (max-width: 1180px) {
+  header.scrolled .menu .nav-dd .dd { border-left-color: var(--hair); }
+  header.scrolled .menu .nav-dd .dd a { color: var(--muted); }
+  header.scrolled .menu .nav-dd .dd a:hover,
+  header.scrolled .menu .nav-dd .dd a:focus-visible { color: var(--red); }
+}
+
 /* ---- hero sub-paragraph, resized for Jeff's longer homepage copy ----
    The replacement paragraph is 640 characters against the 166 it replaced, which
    took the hero sub from 3 lines to 10 and pushed the buttons off screen.
