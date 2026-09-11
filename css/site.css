@@ -453,6 +453,25 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
   .faq-icon { transition: none; }
 }
 
+/* ---- hero sub-paragraph, resized for Jeff's longer homepage copy ----
+   The replacement paragraph is 640 characters against the 166 it replaced, which
+   took the hero sub from 3 lines to 10 and pushed the buttons off screen.
+
+   Both declarations below are needed. The original rule caps the width at 50ch —
+   a width measured in characters — so a smaller font shrinks the column by the
+   same proportion and the line count never changes. Releasing the cap lets the
+   paragraph use the full 640px of .hero-inner, and that is what actually removes
+   the lines: 10 -> 8, with the type at 15px instead of 20px. Opacity is lifted
+   from .82 to .88 to hold legibility at the smaller size. Verified with
+   out/herofit.mjs. */
+.h-sub {
+  max-width: none;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 20px 0 28px;
+  color: rgba(255,255,255,.88);
+}
+
 /* ---- intro copy + long-form prose blocks added with the SEO pass ---- */
 /* Padded on both sides: on the homepage this band sits between the stats card
    and the "Why Elite" section, where the background colour changes, so the last
