@@ -76,22 +76,34 @@
   });
 
   /* ---- view 3: map */
-  var info = root.querySelector('[data-info]');
-  info.hidden = true;
-  root.querySelector('.bd-info-x').addEventListener('click', function () {
-    info.hidden = true;
+  var emptyState = root.querySelector('[data-empty]');
+  var detail = root.querySelector('[data-detail]');
+
+  function clearPins() {
     Object.keys(markers).forEach(function (s) {
       var el = markers[s].getElement();
       if (el) el.querySelector('.bd-pin').classList.remove('is-on');
     });
-  });
+  }
+
+  function showEmpty() {
+    detail.hidden = true;
+    emptyState.hidden = false;
+    clearPins();
+  }
 
   function fillInfo(b, c) {
-    info.querySelector('[data-i-name]').textContent = c.name;
-    info.querySelector('[data-i-town]').textContent = c.town;
-    info.querySelector('[data-i-builder]').textContent = b.name;
-    info.hidden = false;
+    detail.querySelector('[data-i-name]').textContent = c.name;
+    detail.querySelector('[data-i-town]').textContent = c.town;
+    detail.querySelector('[data-i-builder]').textContent = b.name;
+    emptyState.hidden = true;
+    detail.hidden = false;
+    // on a phone the panel sits under the map, so bring it into view
+    if (window.matchMedia('(max-width: 760px)').matches)
+      detail.scrollIntoView({ block: 'nearest' });
   }
+
+  root.querySelector('[data-clear]').addEventListener('click', showEmpty);
 
   function openMap(builderSlug, communitySlug) {
     var b = DATA[builderSlug];
@@ -126,10 +138,7 @@
         title: c.name, alt: c.name, keyboard: true
       }).addTo(layer);
       m.on('click', function () {
-        Object.keys(markers).forEach(function (s) {
-          var el = markers[s].getElement();
-          if (el) el.querySelector('.bd-pin').classList.remove('is-on');
-        });
+        clearPins();
         var el = m.getElement();
         if (el) el.querySelector('.bd-pin').classList.add('is-on');
         fillInfo(b, c);
@@ -143,6 +152,6 @@
     setTimeout(function () { map.invalidateSize(); }, 30);
 
     if (communitySlug && markers[communitySlug]) markers[communitySlug].fire('click');
-    else info.hidden = true;
+    else showEmpty();
   }
 })();
