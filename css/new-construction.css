@@ -113,3 +113,169 @@
 @media(max-width:820px){.nc-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.nc-grid{grid-template-columns:1fr}}
 .page-banner{background-image:url(../images/background-05.jpg)}
+
+
+/* ===== Builder directory — browse builders / communities / map ===== */
+.bd { margin-top: clamp(26px,3.4vw,40px); }
+/* The header is sticky, so a bare scrollIntoView tucks the top of the section
+   underneath it when you move between views. */
+.nc-builders { scroll-margin-top: 96px; }
+.bd-view[hidden], .bd-panel[hidden] { display: none; }
+
+.bd-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; padding-bottom: 12px;
+  border-bottom: 1px solid var(--hair);
+}
+.bd-eyebrow {
+  font-family: "Space Mono"; font-size: 11px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--orange-deep);
+}
+.bd-meta { font-size: 13px; color: var(--gray); }
+.bd-back {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: inherit; font-size: 13.5px; font-weight: 700; color: var(--blue);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.bd-back:hover { color: var(--red); }
+.bd-h {
+  font-family: "Archivo",sans-serif; font-weight: 800; letter-spacing: -.02em;
+  font-size: clamp(22px,2.6vw,30px); color: var(--blue-deep); margin: 18px 0 0;
+}
+
+.bd-tools {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; margin: 16px 0 22px;
+}
+.bd-search { position: relative; flex: 1 1 260px; min-width: 0; }
+.bd-search input, .bd-towns select {
+  width: 100%; font-family: inherit; font-size: 14.5px; color: var(--ink);
+  background: #fff; border: 1px solid var(--hair); border-radius: 11px;
+  padding: 11px 14px; -webkit-appearance: none; appearance: none;
+}
+.bd-towns { flex: 0 0 auto; }
+.bd-towns select { padding-right: 34px; background:
+  #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232A4A84' stroke-width='3'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E")
+  no-repeat right 13px center; cursor: pointer; }
+.bd-search input:focus, .bd-towns select:focus {
+  outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(42,74,132,.12);
+}
+.bd-total { font-size: 12.5px; color: var(--gray); font-family: "Space Mono"; }
+
+/* ---- grids */
+.bd-grid, .cm-grid {
+  display: grid; gap: clamp(12px,1.4vw,18px);
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+.bd-card, .cm-card {
+  display: flex; flex-direction: column; text-align: left; padding: 0;
+  background: #fff; border: 1px solid var(--hair); border-radius: 16px;
+  overflow: hidden; cursor: pointer; font-family: inherit;
+  transition: transform .18s, box-shadow .2s, border-color .2s;
+}
+.bd-card:hover, .cm-card:hover {
+  transform: translateY(-3px); border-color: transparent;
+  box-shadow: 0 18px 38px rgba(16,28,58,.13);
+}
+.bd-card:focus-visible, .cm-card:focus-visible {
+  outline: 2px solid var(--orange); outline-offset: 2px;
+}
+.bd-card-foot, .cm-foot {
+  display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: 2px 10px; padding: 12px 14px 13px; border-top: 1px solid var(--hair);
+}
+.bd-name, .cm-name {
+  font-family: "Archivo",sans-serif; font-weight: 700; font-size: 14.5px;
+  color: var(--blue-deep); line-height: 1.25;
+}
+.bd-count, .cm-town {
+  grid-column: 1; font-size: 11.5px; color: var(--gray);
+  font-family: "Space Mono"; letter-spacing: .04em;
+}
+.bd-arrow {
+  grid-column: 2; grid-row: 1 / span 2; width: 30px; height: 30px;
+  border-radius: 50%; display: grid; place-items: center;
+  background: var(--soft-2, #F4F6FA); color: var(--blue);
+  transition: background .2s, color .2s, transform .2s;
+}
+.bd-card:hover .bd-arrow, .cm-card:hover .bd-arrow {
+  background: var(--blue); color: #fff; transform: translateX(3px);
+}
+
+/* ---- empty image slots (artwork supplied later) */
+.ph {
+  aspect-ratio: var(--r,16/9); width: 100%; display: grid; place-items: center;
+  background: repeating-linear-gradient(135deg,#F7F9FC 0 10px,#F1F4F9 10px 20px);
+  border-bottom: 1px dashed var(--hair); padding: 10px; text-align: center;
+}
+.ph span {
+  font-family: "Space Mono"; font-size: 10px; letter-spacing: .08em;
+  text-transform: uppercase; color: #9AA3B8; line-height: 1.5;
+}
+.bd-shots .ph { border: 1px dashed var(--hair); border-radius: 10px; }
+
+.bd-empty {
+  border: 1px dashed var(--hair); border-radius: 16px; background: #fff;
+  padding: clamp(26px,3vw,40px); text-align: center;
+}
+.bd-empty p { margin: 0 0 18px; color: var(--muted); font-size: 15.5px; }
+.cm-none { margin: 18px 0 0; color: var(--muted); font-size: 15px; }
+
+/* ---- map */
+.bd-map-wrap {
+  position: relative; margin-top: 18px; border: 1px solid var(--hair);
+  border-radius: 18px; overflow: hidden; background: var(--soft-2,#F4F6FA);
+}
+.bd-map { height: clamp(420px,58vh,620px); width: 100%; z-index: 1; }
+.bd-info {
+  position: absolute; z-index: 2; top: 14px; left: 14px; width: 310px;
+  max-height: calc(100% - 28px); overflow-y: auto; background: #fff;
+  border-radius: 14px; box-shadow: 0 18px 44px rgba(16,28,58,.2);
+  padding: 18px 18px 20px;
+}
+.bd-info[hidden] { display: none; }
+.bd-info h4 {
+  font-family: "Archivo",sans-serif; font-weight: 800; font-size: 18px;
+  color: var(--blue-deep); margin: 0 26px 3px 0; line-height: 1.2;
+}
+.bd-i-town {
+  margin: 0 0 14px; font-family: "Space Mono"; font-size: 11px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--gray);
+}
+.bd-shots { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+.bd-i-note { margin: 13px 0 14px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.bd-i-cta { width: 100%; justify-content: center; font-size: 13.5px; }
+.bd-info-x {
+  position: absolute; top: 10px; right: 10px; width: 28px; height: 28px;
+  border: 0; border-radius: 50%; background: var(--soft-2,#F4F6FA);
+  color: var(--blue-deep); font-size: 19px; line-height: 1; cursor: pointer;
+}
+.bd-info-x:hover { background: var(--red); color: #fff; }
+
+/* Elite-coloured map pin, drawn in CSS so there is no image to load */
+.bd-pin {
+  width: 26px; height: 26px; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg); background: var(--red);
+  border: 2px solid #fff; box-shadow: 0 3px 8px rgba(16,28,58,.35);
+}
+.bd-pin.is-on { background: var(--orange); }
+
+.vh {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+@media (max-width: 1080px) { .bd-grid, .cm-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width: 760px) {
+  .bd-grid, .cm-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .bd-tools { flex-direction: column; align-items: stretch; }
+  .bd-total { display: none; }
+  /* the floating card would cover the map on a phone — put it underneath */
+  .bd-map-wrap { border-radius: 14px; }
+  .bd-map { height: 58vh; }
+  .bd-info {
+    position: static; width: auto; max-height: none; border-radius: 0;
+    box-shadow: none; border-top: 1px solid var(--hair);
+  }
+}
+@media (max-width: 420px) { .bd-grid, .cm-grid { grid-template-columns: 1fr; } }
