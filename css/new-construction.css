@@ -221,36 +221,59 @@
 .bd-empty p { margin: 0 0 18px; color: var(--muted); font-size: 15.5px; }
 .cm-none { margin: 18px 0 0; color: var(--muted); font-size: 15px; }
 
-/* ---- map */
+/* ---- map: info column on the left, map filling the rest */
 .bd-map-wrap {
-  position: relative; margin-top: 18px; border: 1px solid var(--hair);
-  border-radius: 18px; overflow: hidden; background: var(--soft-2,#F4F6FA);
+  margin-top: 18px; border: 1px solid var(--hair); border-radius: 18px;
+  overflow: hidden; background: #fff;
+  display: grid; grid-template-columns: 340px 1fr; align-items: stretch;
 }
-.bd-map { height: clamp(420px,58vh,620px); width: 100%; z-index: 1; }
+.bd-map { height: clamp(460px,64vh,680px); width: 100%; z-index: 1; }
 .bd-info {
-  position: absolute; z-index: 2; top: 14px; left: 14px; width: 310px;
-  max-height: calc(100% - 28px); overflow-y: auto; background: #fff;
-  border-radius: 14px; box-shadow: 0 18px 44px rgba(16,28,58,.2);
-  padding: 18px 18px 20px;
+  border-right: 1px solid var(--hair); background: #fff;
+  display: flex; flex-direction: column; min-width: 0;
+  max-height: clamp(460px,64vh,680px); overflow-y: auto;
 }
-.bd-info[hidden] { display: none; }
-.bd-info h4 {
-  font-family: "Archivo",sans-serif; font-weight: 800; font-size: 18px;
-  color: var(--blue-deep); margin: 0 26px 3px 0; line-height: 1.2;
+.bd-info-body[hidden], .bd-info-empty[hidden] { display: none; }
+
+/* waiting state */
+.bd-info-empty {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 34px 26px; gap: 4px;
+}
+.bd-info-mark {
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--soft-2,#F4F6FA); color: var(--blue); margin-bottom: 12px;
+}
+.bd-info-empty p { margin: 0; font-size: 15px; color: var(--ink); }
+.bd-info-hint { margin-top: 6px !important; font-size: 13.5px; color: var(--muted);
+                line-height: 1.55; max-width: 24ch; }
+
+/* detail state */
+.bd-info-body .ph:first-child { border-bottom: 1px solid var(--hair); }
+.bd-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+            background: var(--hair); border-bottom: 1px solid var(--hair); }
+.bd-shots .ph { border: 0; }
+.bd-info-text { padding: 15px 18px 18px; }
+.bd-info-text h4 {
+  font-family: "Archivo",sans-serif; font-weight: 800; font-size: 19px;
+  color: var(--blue-deep); margin: 0 0 7px; line-height: 1.2;
 }
 .bd-i-town {
-  margin: 0 0 14px; font-family: "Space Mono"; font-size: 11px;
-  letter-spacing: .07em; text-transform: uppercase; color: var(--gray);
+  display: flex; align-items: center; gap: 6px; margin: 0 0 3px;
+  font-size: 13.5px; color: var(--blue); font-weight: 600;
 }
-.bd-shots { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
-.bd-i-note { margin: 13px 0 14px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.bd-i-builder { margin: 0; font-size: 13px; color: var(--gray); }
+.bd-i-builder b { color: var(--ink); font-weight: 600; }
+.bd-i-note { margin: 11px 0 14px; font-size: 13px; color: var(--muted); line-height: 1.55;
+             padding-top: 12px; border-top: 1px solid var(--hair); }
+.bd-i-actions { display: flex; flex-direction: column; gap: 8px; }
 .bd-i-cta { width: 100%; justify-content: center; font-size: 13.5px; }
-.bd-info-x {
-  position: absolute; top: 10px; right: 10px; width: 28px; height: 28px;
-  border: 0; border-radius: 50%; background: var(--soft-2,#F4F6FA);
-  color: var(--blue-deep); font-size: 19px; line-height: 1; cursor: pointer;
+.bd-i-back {
+  background: none; border: 1px solid var(--hair); border-radius: 100px;
+  padding: 9px 14px; font-family: inherit; font-size: 13px; font-weight: 600;
+  color: var(--blue); cursor: pointer;
 }
-.bd-info-x:hover { background: var(--red); color: #fff; }
+.bd-i-back:hover { border-color: var(--blue); background: var(--soft-2,#F4F6FA); }
 
 /* Elite-coloured map pin, drawn in CSS so there is no image to load */
 .bd-pin {
@@ -270,12 +293,13 @@
   .bd-grid, .cm-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .bd-tools { flex-direction: column; align-items: stretch; }
   .bd-total { display: none; }
-  /* the floating card would cover the map on a phone — put it underneath */
-  .bd-map-wrap { border-radius: 14px; }
-  .bd-map { height: 58vh; }
+  /* one column: map first, then the detail panel under it */
+  .bd-map-wrap { grid-template-columns: 1fr; border-radius: 14px; }
+  .bd-map { height: 52vh; grid-row: 1; }
   .bd-info {
-    position: static; width: auto; max-height: none; border-radius: 0;
-    box-shadow: none; border-top: 1px solid var(--hair);
+    grid-row: 2; border-right: 0; border-top: 1px solid var(--hair);
+    max-height: none; overflow: visible;
   }
+  .bd-info-empty { padding: 26px 22px; }
 }
 @media (max-width: 420px) { .bd-grid, .cm-grid { grid-template-columns: 1fr; } }
