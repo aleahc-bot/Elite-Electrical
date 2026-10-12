@@ -68,45 +68,24 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Careers page rebuild — Oct 2026
+   Section order follows elevatemyhome.com/careers: intro -> listings ->
+   narrative benefits + image -> centred closing CTA. No card grids.
    All new rules are prefixed .cr- so they cannot collide with shared classes.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* jump link in the banner */
-.cr-jump{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:"Space Mono";font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:100px;padding:13px 24px;transition:background .2s,border-color .2s,transform .2s}
+/* intro block */
+.cr-leadin{font-weight:800;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.015em;color:var(--blue-deep);margin:0 0 26px}
+.cr-jump{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:"Space Mono";font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:100px;padding:13px 24px;transition:background .2s,border-color .2s,transform .2s}
 .cr-jump:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
 .cr-jump svg{transition:transform .2s}
 .cr-jump:hover svg{transform:translateY(3px)}
 
-/* narrative + photo */
-.cr-trade{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,4.5vw,64px);align-items:stretch}
-.cr-trade-copy .sec-title{margin:0 0 22px}
-.cr-trade-copy p{color:var(--muted);font-size:16px;line-height:1.68;margin:0 0 16px;max-width:60ch}
-.cr-trade-copy p:last-child{margin-bottom:0}
-.cr-photo{position:relative;border-radius:24px;overflow:hidden;min-height:clamp(260px,32vw,400px);max-height:600px;margin:auto 0;background:var(--soft);border:1px solid var(--hair);display:grid;place-items:center}
-/* drop images/careers-team.jpg into the images folder and it shows here.
-   Until that file exists the placeholder below stays visible. */
-.cr-photo::after{content:"";position:absolute;inset:0;background:url(../images/careers-team.jpg) center/cover no-repeat}
-.cr-ph{font-family:"Space Mono";font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:2;padding:24px}
-.cr-ph b{display:block;font-family:"Archivo";font-weight:800;font-size:16px;letter-spacing:-.01em;color:var(--blue-deep);text-transform:none;margin-bottom:8px}
-@media(max-width:900px){.cr-trade{grid-template-columns:1fr}}
+/* divider rule under a section heading */
+.cr-rule{display:block;width:72px;height:3px;border-radius:3px;background:var(--orange);margin:22px 0 26px}
+.cr-rule.light{background:var(--yellow);margin:22px auto 26px}
 
-/* benefits strip */
-.cr-ben-sec{background:var(--soft-2)}
-.cr-bens{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
-.cr-ben{padding:28px 22px;border-radius:18px;background:#fff;border:1px solid var(--hair);box-shadow:0 2px 6px rgba(13,24,48,.04);transition:transform .25s,box-shadow .25s}
-.cr-ben:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(13,24,48,.10)}
-.cr-ben .ci{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(180,134,47,.10);border:1px solid rgba(180,134,47,.22);color:var(--orange-deep);margin-bottom:18px}
-.cr-ben h3{font-size:15.5px;font-weight:800;color:var(--blue-deep);letter-spacing:-.01em;margin:0}
-.cr-ben p{color:var(--muted);font-size:13.5px;line-height:1.5;margin:8px 0 0}
-@media(max-width:1080px){.cr-bens{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:680px){.cr-bens{grid-template-columns:1fr 1fr}}
-@media(max-width:460px){.cr-bens{grid-template-columns:1fr}}
-
-/* open roles */
-.cr-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.cr-count{font-family:"Space Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--hair);background:#fff;border-radius:100px;padding:9px 16px;white-space:nowrap}
-.cr-lede{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:66ch;margin:18px 0 0}
-.cr-list{display:flex;flex-direction:column;gap:12px;margin-top:34px}
+/* ── open roles (immediately after the intro, as on the reference page) ──── */
+.cr-list{display:flex;flex-direction:column;gap:12px}
 
 .cr-job{border:1px solid var(--hair);border-radius:18px;background:#fff;box-shadow:0 2px 6px rgba(13,24,48,.04);transition:border-color .2s,box-shadow .25s;scroll-margin-top:110px}
 .cr-job:hover{border-color:var(--gray);box-shadow:0 14px 34px rgba(16,28,58,.08)}
@@ -143,5 +122,28 @@
   .cr-note{max-width:none}
 }
 
-/* heading level fix: the why-cards use h3 now, matching the old h4 look */
-.wcard h3{font-size:17px;font-weight:800;color:var(--blue-deep);letter-spacing:-.01em;margin:0}
+/* ── narrative benefits: single column of prose, image beneath ──────────── */
+.cr-why{background:var(--soft-2)}
+.cr-prose{max-width:860px}
+.cr-prose .sec-title{margin:0}
+.cr-prose p{color:var(--muted);font-size:16.5px;line-height:1.72;margin:0 0 18px}
+.cr-prose p:last-child{margin-bottom:0}
+.cr-photo{position:relative;margin-top:clamp(34px,4.5vw,56px);border-radius:24px;overflow:hidden;aspect-ratio:21/9;min-height:260px;background:var(--soft);border:1px solid var(--hair);display:grid;place-items:center}
+/* drop images/careers-photo.jpg into the images folder and it shows here.
+   Until that file exists the placeholder below stays visible. */
+.cr-photo::after{content:"";position:absolute;inset:0;background:url(../images/careers-photo.jpg) center/cover no-repeat}
+.cr-ph{font-family:"Space Mono";font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:2;padding:24px}
+.cr-ph b{display:block;font-family:"Archivo";font-weight:800;font-size:16px;letter-spacing:-.01em;color:var(--blue-deep);text-transform:none;margin-bottom:8px}
+@media(max-width:700px){.cr-photo{aspect-ratio:4/3}}
+
+/* ── closing CTA: one centred stacked block ─────────────────────────────── */
+.cr-close{background:linear-gradient(125deg,var(--blue-deep),var(--ink-blue));color:#fff;border-radius:24px;padding:clamp(44px,6vw,76px) clamp(26px,5vw,62px);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.cr-close::after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.18)}
+.cr-close>*{position:relative;z-index:1}
+.cr-close h2{color:#fff;font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;margin:0;max-width:20ch}
+.cr-close p{color:rgba(255,255,255,.86);font-size:16px;line-height:1.62;margin:0 0 30px;max-width:56ch}
+.cr-close .btn-dark{background:var(--red);color:#fff}
+.cr-close .btn-dark:hover{background:var(--red-deep);box-shadow:0 14px 30px rgba(196,42,42,.3)}
+.cr-tagline{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:clamp(15px,1.8vw,18px);color:var(--yellow);margin:26px 0 22px;line-height:1.5}
+.cr-mark{height:42px;width:auto;margin-top:38px;opacity:.85}
+@media(max-width:560px){.cr-close .btn{width:100%;justify-content:center}}
