@@ -67,83 +67,88 @@
 .page-banner{background-image:url(../images/background-01.jpg)}
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Careers page rebuild — Oct 2026
-   Section order follows elevatemyhome.com/careers: intro -> listings ->
-   narrative benefits + image -> centred closing CTA. No card grids.
-   All new rules are prefixed .cr- so they cannot collide with shared classes.
+   Careers page — layout matched to elevatemyhome.com/careers (Oct 2026)
+     1. solid banner, centred, with a white listings card sitting inside it
+     2. two columns: copy left, square image right, hairline under the heading
+     3. white centred CTA with a faint brand watermark on the right
+     4. closing colour band: one line of copy + a button
+   Elite's own colours, type and components throughout. All new rules are
+   prefixed .cr- so they cannot collide with shared classes.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* intro block */
-.cr-leadin{font-weight:800;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.015em;color:var(--blue-deep);margin:0 0 26px}
-.cr-jump{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:"Space Mono";font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:100px;padding:13px 24px;transition:background .2s,border-color .2s,transform .2s}
-.cr-jump:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
-.cr-jump svg{transition:transform .2s}
-.cr-jump:hover svg{transform:translateY(3px)}
+/* ── 1. banner + listings card ──────────────────────────────────────────── */
+.cr-hero{background:linear-gradient(160deg,var(--blue-deep),var(--ink-blue));color:#fff;text-align:center;
+  padding-top:clamp(140px,18vh,180px);padding-bottom:clamp(56px,7vw,86px)}
+.cr-hero h1{color:#fff;font-weight:900;font-size:clamp(40px,6.5vw,80px);letter-spacing:-.035em;line-height:.94;margin:0}
+.cr-lede{color:rgba(255,255,255,.84);font-size:clamp(16px,1.8vw,19px);line-height:1.55;margin:22px auto 0;max-width:62ch}
+.cr-leadin{color:#fff;font-weight:600;font-size:clamp(15px,1.7vw,17.5px);letter-spacing:0;margin:16px auto 0}
 
-/* divider rule under a section heading */
-.cr-rule{display:block;width:72px;height:3px;border-radius:3px;background:var(--orange);margin:22px 0 26px}
-.cr-rule.light{background:var(--yellow);margin:22px auto 26px}
+.cr-card{background:#fff;border-radius:18px;text-align:left;
+  padding:clamp(24px,3.4vw,46px) clamp(22px,3.4vw,46px) clamp(30px,4vw,56px);
+  margin-top:clamp(34px,4.5vw,54px);box-shadow:0 34px 80px rgba(5,12,28,.34)}
 
-/* ── open roles (immediately after the intro, as on the reference page) ──── */
-.cr-list{display:flex;flex-direction:column;gap:12px}
+.cr-list{display:flex;flex-direction:column}
+.cr-job{border-bottom:1px solid var(--hair);scroll-margin-top:110px}
+.cr-job:first-child{border-top:1px solid var(--hair)}
 
-.cr-job{border:1px solid var(--hair);border-radius:18px;background:#fff;box-shadow:0 2px 6px rgba(13,24,48,.04);transition:border-color .2s,box-shadow .25s;scroll-margin-top:110px}
-.cr-job:hover{border-color:var(--gray);box-shadow:0 14px 34px rgba(16,28,58,.08)}
-.cr-job[open]{border-color:rgba(42,74,132,.42);box-shadow:0 20px 48px rgba(16,28,58,.11)}
-
-.cr-sum{list-style:none;cursor:pointer;user-select:none;display:grid;grid-template-columns:1fr auto auto;grid-template-rows:auto auto;column-gap:20px;align-items:center;padding:24px clamp(20px,3vw,32px)}
+.cr-sum{list-style:none;cursor:pointer;user-select:none;display:block;padding:20px 2px}
 .cr-sum::-webkit-details-marker{display:none}
 .cr-sum::marker{content:""}
-.cr-sum:focus-visible{outline:2px solid var(--orange);outline-offset:-3px;border-radius:18px}
-.cr-name{grid-area:1/1/2/2;font-size:19px;font-weight:800;color:var(--blue-deep);letter-spacing:-.01em;margin:0;line-height:1.25}
-.cr-meta{grid-area:2/1/3/2;font-family:"Space Mono";font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:7px}
-.cr-tag{grid-area:1/2/3/3;font-family:"Space Mono";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--hair);border-radius:100px;padding:7px 13px;white-space:nowrap}
-.cr-ico{grid-area:1/3/3/4;width:11px;height:11px;min-width:11px;border-right:2.2px solid var(--blue-deep);border-bottom:2.2px solid var(--blue-deep);transform:rotate(45deg);margin:0 4px 4px 0;transition:transform .25s}
-.cr-job[open] .cr-ico{transform:rotate(-135deg);margin:4px 4px 0 0}
-@media(prefers-reduced-motion:reduce){.cr-ico{transition:none}}
+.cr-sum:focus-visible{outline:2px solid var(--orange);outline-offset:2px;border-radius:6px}
+.cr-name{font-size:19px;font-weight:800;color:var(--blue-deep);letter-spacing:-.01em;margin:0;line-height:1.3}
+.cr-loc{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5}
+.cr-loc b{color:var(--ink);font-weight:700}
+.cr-sep{display:inline-block;width:26px}
+.cr-toggle{display:inline-block;margin-top:7px;font-size:13.5px;font-weight:600;color:var(--blue);transition:color .15s}
+.cr-toggle::before{content:"+ View details"}
+.cr-job[open] .cr-toggle::before{content:"\2212 Hide details"}
+.cr-sum:hover .cr-toggle{color:var(--blue-deep);text-decoration:underline}
+@media(max-width:520px){.cr-sep{display:block;width:auto;height:2px}}
 
-.cr-body{padding:0 clamp(20px,3vw,32px) 30px}
-.cr-blurb{margin:0;padding:0 0 22px;border-bottom:1px solid var(--hair);color:var(--blue-deep);font-size:16.5px;font-weight:600;line-height:1.5}
-.cr-cols{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(22px,3.5vw,46px);padding-top:24px}
+.cr-body{padding:4px 2px 26px}
+.cr-blurb{margin:0 0 20px;color:var(--blue-deep);font-size:16px;font-weight:600;line-height:1.5}
+.cr-cols{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(22px,3.5vw,46px)}
 .cr-cols h4{font-family:"Space Mono";font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-deep);font-weight:700;margin:0 0 14px}
 .cr-cols ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
 .cr-cols li{position:relative;padding-left:21px;color:var(--muted);font-size:14.5px;line-height:1.55}
 .cr-cols li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
 @media(max-width:780px){.cr-cols{grid-template-columns:1fr;gap:26px}}
-
-.cr-apply{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:1px dashed var(--hair)}
+.cr-apply{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px dashed var(--hair)}
 .cr-note{color:var(--muted);font-size:13.5px;line-height:1.5;max-width:40ch}
+@media(max-width:560px){.cr-apply .btn{width:100%;justify-content:center}.cr-note{max-width:none}}
 
-@media(max-width:560px){
-  .cr-sum{column-gap:14px;padding:22px 20px}
-  .cr-tag{display:none}
-  .cr-name{font-size:17.5px}
-  .cr-apply .btn{width:100%;justify-content:center}
-  .cr-note{max-width:none}
-}
-
-/* ── narrative benefits: single column of prose, image beneath ──────────── */
+/* ── 2. two-column benefits: copy left, square image right ──────────────── */
 .cr-why{background:var(--soft-2)}
-.cr-prose{max-width:860px}
-.cr-prose .sec-title{margin:0}
-.cr-prose p{color:var(--muted);font-size:16.5px;line-height:1.72;margin:0 0 18px}
-.cr-prose p:last-child{margin-bottom:0}
-.cr-photo{position:relative;margin-top:clamp(34px,4.5vw,56px);border-radius:24px;overflow:hidden;aspect-ratio:21/9;min-height:260px;background:var(--soft);border:1px solid var(--hair);display:grid;place-items:center}
+.cr-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4.6vw,70px);align-items:stretch}
+.cr-copy .sec-title{font-size:clamp(27px,3.5vw,42px);margin:0;line-height:1.1}
+.cr-hr{display:block;height:1px;background:var(--gray);opacity:.7;margin:26px 0 28px}
+.cr-hr.short{width:96px;height:3px;border-radius:3px;background:var(--orange);opacity:1;margin:22px auto 26px}
+.cr-copy p{color:var(--muted);font-size:16px;line-height:1.7;margin:0 0 18px}
+.cr-copy p:last-child{margin-bottom:0}
+
+.cr-photo{position:relative;border-radius:14px;overflow:hidden;background:var(--soft);min-height:clamp(300px,38vw,560px);
+  border:1px solid var(--hair);display:grid;place-items:center}
 /* drop images/careers-photo.jpg into the images folder and it shows here.
    Until that file exists the placeholder below stays visible. */
 .cr-photo::after{content:"";position:absolute;inset:0;background:url(../images/careers-photo.jpg) center/cover no-repeat}
 .cr-ph{font-family:"Space Mono";font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:2;padding:24px}
 .cr-ph b{display:block;font-family:"Archivo";font-weight:800;font-size:16px;letter-spacing:-.01em;color:var(--blue-deep);text-transform:none;margin-bottom:8px}
-@media(max-width:700px){.cr-photo{aspect-ratio:4/3}}
+@media(max-width:900px){.cr-two{grid-template-columns:1fr}.cr-photo{min-height:0;aspect-ratio:4/3}}
 
-/* ── closing CTA: one centred stacked block ─────────────────────────────── */
-.cr-close{background:linear-gradient(125deg,var(--blue-deep),var(--ink-blue));color:#fff;border-radius:24px;padding:clamp(44px,6vw,76px) clamp(26px,5vw,62px);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
-.cr-close::after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.18)}
-.cr-close>*{position:relative;z-index:1}
-.cr-close h2{color:#fff;font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;margin:0;max-width:20ch}
-.cr-close p{color:rgba(255,255,255,.86);font-size:16px;line-height:1.62;margin:0 0 30px;max-width:56ch}
-.cr-close .btn-dark{background:var(--red);color:#fff}
-.cr-close .btn-dark:hover{background:var(--red-deep);box-shadow:0 14px 30px rgba(196,42,42,.3)}
-.cr-tagline{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:clamp(15px,1.8vw,18px);color:var(--yellow);margin:26px 0 22px;line-height:1.5}
-.cr-mark{height:42px;width:auto;margin-top:38px;opacity:.85}
-@media(max-width:560px){.cr-close .btn{width:100%;justify-content:center}}
+/* ── 3. white centred CTA with brand watermark ──────────────────────────── */
+.cr-cta{background:#fff;position:relative;overflow:hidden}
+.cr-mark{position:absolute;right:clamp(-60px,-2vw,0px);top:50%;transform:translateY(-50%);
+  width:clamp(240px,30vw,430px);height:auto;color:var(--soft);pointer-events:none;z-index:0}
+.cr-cta .wrap{position:relative;z-index:1}
+.cr-cta-in{text-align:center;display:flex;flex-direction:column;align-items:center}
+.cr-cta-in .eyebrow{justify-content:center}
+.cr-cta-in .sec-title{font-size:clamp(27px,3.8vw,46px);margin:0;max-width:22ch;line-height:1.08}
+.cr-cta-in p{color:var(--muted);font-size:16px;line-height:1.65;margin:0 0 30px;max-width:72ch}
+@media(max-width:560px){.cr-cta-in .btn{width:100%;justify-content:center}}
+
+/* ── 4. closing colour band ─────────────────────────────────────────────── */
+.cr-band{background:linear-gradient(125deg,var(--blue-deep),var(--ink-blue));
+  padding-top:clamp(40px,4.4vw,58px);padding-bottom:clamp(40px,4.4vw,58px)}
+.cr-band-in{display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,38px);flex-wrap:wrap}
+.cr-band h2{color:#fff;font-weight:800;font-size:clamp(24px,3.4vw,40px);letter-spacing:-.025em;margin:0;text-align:center}
+@media(max-width:560px){.cr-band-in .btn{width:100%;justify-content:center}}
