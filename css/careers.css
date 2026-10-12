@@ -77,8 +77,15 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── 1. banner + listings card ──────────────────────────────────────────── */
-.cr-hero{background:linear-gradient(160deg,var(--blue-deep),var(--ink-blue));color:#fff;text-align:center;
+.cr-hero{position:relative;overflow:hidden;color:#fff;text-align:center;
+  background:#101C3A center/cover no-repeat;background-image:url(../images/background-01.jpg);
   padding-top:clamp(140px,18vh,180px);padding-bottom:clamp(56px,7vw,86px)}
+/* centred content, so the veil is symmetrical rather than the left-weighted
+   one the other page banners use */
+.cr-hero::after{content:"";position:absolute;inset:0;z-index:0;background:
+  linear-gradient(180deg,rgba(16,28,58,.78) 0%,rgba(16,28,58,.42) 46%,rgba(16,28,58,.86) 100%),
+  linear-gradient(90deg,rgba(16,28,58,.42),rgba(16,28,58,.06) 50%,rgba(16,28,58,.42))}
+.cr-hero .wrap{position:relative;z-index:1}
 .cr-hero h1{color:#fff;font-weight:900;font-size:clamp(40px,6.5vw,80px);letter-spacing:-.035em;line-height:.94;margin:0}
 .cr-lede{color:rgba(255,255,255,.84);font-size:clamp(16px,1.8vw,19px);line-height:1.55;margin:22px auto 0;max-width:62ch}
 .cr-leadin{color:#fff;font-weight:600;font-size:clamp(15px,1.7vw,17.5px);letter-spacing:0;margin:16px auto 0}
