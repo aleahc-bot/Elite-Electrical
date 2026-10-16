@@ -181,18 +181,39 @@ header:not(.scrolled) .burger{color:var(--blue);border-color:var(--hair)}
    every width or the header is left empty. */
 .hero-logo{display:none}
 body.home .brand{opacity:1;pointer-events:auto}
-.brand,.brand img,.brand .l-white,.brand .l-navy{height:88px}
-@media(max-width:1180px){.brand,.brand img,.brand .l-white,.brand .l-navy{height:70px}}
-@media(max-width:430px){.brand,.brand img,.brand .l-white,.brand .l-navy{height:58px}}
+/* Big header mark, to the size in the client's reference. The nav bar has to
+   grow with it, and so does the mobile menu's top offset (it is pinned to the
+   old 84px bar) and the hero's top padding, or the headline sits under it. */
+.nav{height:136px}
+.brand,.brand img,.brand .l-white,.brand .l-navy{height:124px}
+@media(max-width:1180px){
+  .nav{height:118px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:106px}
+  .menu{inset:118px 0 auto 0;max-height:calc(100vh - 118px);max-height:calc(100dvh - 118px)}
+}
+@media(max-width:430px){
+  .nav{height:110px;padding-left:16px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:98px}
+  .menu{inset:110px 0 auto 0;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}
+}
+@media(max-width:340px){
+  .nav{height:94px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:82px}
+  .menu{inset:94px 0 auto 0;max-height:calc(100dvh - 94px)}
+}
 
 /* ── the hero itself ────────────────────────────────────────────────────── */
 .hero.hero-light{
   position:relative;display:block;overflow:hidden;color:var(--ink);
   background:#fff;min-height:0;
-  padding:clamp(128px,15vh,168px) 0 clamp(54px,6vw,78px)}
+  padding:clamp(158px,19vh,202px) 0 clamp(54px,6vw,78px)}
 .hero-light .hl-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  overflow:hidden;
   background:url(../images/background-01.jpg) center/cover no-repeat;
-  opacity:.09}
+  opacity:.18}   /* <- the one number that sets how strongly the video reads */
+.hero-light .hl-vid{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+@media(prefers-reduced-motion:reduce){.hero-light .hl-vid{display:none}}
 .hero-light::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.35),rgba(255,255,255,.92) 68%,#fff 100%)}
 .hl-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
