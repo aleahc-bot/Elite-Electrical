@@ -16,10 +16,10 @@
 .hero-inner{width:100%;max-width:640px}
 .hero-media{position:relative;overflow:hidden}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink-blue) 0%,rgba(13,24,48,.42) 26%,rgba(13,24,48,.06) 58%,transparent 100%);z-index:1}
-.hero-vlabel{position:absolute;right:22px;bottom:18px;z-index:2;font-family:"Space Mono";font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-vlabel{position:absolute;right:22px;bottom:18px;z-index:2;font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-media{order:2;min-height:clamp(260px,42vh,400px)}.hero-media::after{background:linear-gradient(0deg,var(--ink-blue) 0%,rgba(13,24,48,.2) 42%,transparent 76%)}.hero-content{order:1;padding-top:clamp(104px,13vh,116px);padding-bottom:32px}}
 .hero .bg{position:absolute;inset:0;z-index:0;background:#101C3A center/cover no-repeat;background-image:var(--hero-img,none)}
-.h-title{font-family:"Archivo";font-weight:900;font-size:clamp(40px,5vw,74px);line-height:.96;letter-spacing:-.035em;color:#fff;margin:0}
+.h-title{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:clamp(40px,5vw,74px);line-height:.96;letter-spacing:-.035em;color:#fff;margin:0}
 @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 @media (max-width:980px){.h-vlabel,.scrollcue{display:none}}
 @media (prefers-reduced-motion:reduce){.scrollcue .bar{animation:none}}
@@ -35,7 +35,7 @@
 .ht{position:relative;padding-top:38px}
 .ht::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--blue)}
 .ht:last-child::before{background:var(--orange);border-color:var(--orange-deep)}
-.ht .yr{font-family:"Space Mono";font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--orange-deep)}
+.ht .yr{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--orange-deep)}
 .ht h3{font-weight:800;font-size:20px;margin:10px 0 8px;letter-spacing:-.01em}
 .ht p{color:var(--muted);margin:0;font-size:14.5px;line-height:1.55}
 @media (max-width:860px){
@@ -67,8 +67,8 @@
 .tcard2 p{color:var(--muted);font-size:15px;margin:16px 0 20px;line-height:1.55}
 .tcard2 p{position:relative;z-index:1}
 .tcard2 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 26px;position:relative;z-index:1}
-.tcard2 .tags span{font-family:"Space Mono";font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--soft-2);border:1px solid var(--hair);border-radius:100px;padding:6px 13px}
-.tcard2 .go{margin-top:auto;width:100%;border-top:1px solid var(--hair);padding-top:22px;font-family:"Space Mono";font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-deep);font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}
+.tcard2 .tags span{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--soft-2);border:1px solid var(--hair);border-radius:100px;padding:6px 13px}
+.tcard2 .go{margin-top:auto;width:100%;border-top:1px solid var(--hair);padding-top:22px;font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-deep);font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}
 .tcard2 .ga{width:36px;height:36px;border-radius:50%;background:var(--soft-2);border:1px solid var(--hair);display:grid;place-items:center;color:var(--blue);transition:transform .3s,background .3s,color .3s,border-color .3s}
 .tcard2 .ga svg{width:16px;height:16px}
 .tcard2.a:hover .ga{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateX(4px)}
@@ -86,7 +86,7 @@
 @media(max-width:760px){.tcard2.elcard{grid-template-columns:1fr;gap:22px}}
 @media (max-width:820px){.tcards{grid-template-columns:1fr}}
 .why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}
-.wcard .wn{position:absolute;top:18px;right:22px;font-family:"Archivo";font-weight:900;font-size:40px;line-height:1;letter-spacing:-.02em;color:rgba(180,134,47,.16);z-index:0}
+.wcard .wn{position:absolute;top:18px;right:22px;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:40px;line-height:1;letter-spacing:-.02em;color:rgba(180,134,47,.16);z-index:0}
 .wcard .wi,.wcard h4,.wcard p{position:relative;z-index:1}
 .wcard .wi{width:52px;height:52px;border-radius:14px;background:linear-gradient(160deg,var(--blue),var(--ink-blue));border:none;display:grid;place-items:center;color:var(--yellow);margin-bottom:20px;box-shadow:0 12px 24px rgba(13,24,48,.16)}
 @media (max-width:900px){.why{grid-template-columns:1fr 1fr}}
@@ -95,8 +95,8 @@
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
 @media (max-width:820px){.values{grid-template-columns:1fr}}
 .rsum{display:flex;align-items:center;gap:30px;flex-wrap:wrap;background:var(--soft);border:1px solid var(--hair);border-radius:20px;padding:32px 36px;margin-bottom:42px}
-.rsum .big{font-family:"Archivo";font-weight:900;font-size:60px;color:var(--blue-deep);line-height:1;letter-spacing:-.03em}
-.rsum .rmeta{font-family:"Space Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.rsum .big{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:60px;color:var(--blue-deep);line-height:1;letter-spacing:-.03em}
+.rsum .rmeta{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 .hero .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:url(#heroSharp) contrast(1.05) saturate(1.08) brightness(1.02)}
 .hero-fx{position:absolute;pointer-events:none}
 /* floating hero trust chips (modern) */
@@ -105,8 +105,8 @@
 .hbadge .hi{width:40px;height:40px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;background:var(--soft);color:var(--blue)}
 .hbadge.gold .hi{background:rgba(180,134,47,.15);color:var(--orange-deep)}
 .hbadge .hi svg{width:20px;height:20px}
-.hbadge b{display:block;font-family:"Archivo";font-weight:800;font-size:14.5px;color:var(--ink-blue);letter-spacing:-.01em;line-height:1.12}
-.hbadge small{display:block;font-family:"Space Mono";font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hbadge b{display:block;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:800;font-size:14.5px;color:var(--ink-blue);letter-spacing:-.01em;line-height:1.12}
+.hbadge small{display:block;font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .hbadge.b2{margin-right:30px}
 .hbadge.b3{margin-right:10px}
 @media (max-width:1040px){.hbadges{display:none}}
@@ -118,10 +118,10 @@
 .btn-book .barrow{width:30px;height:30px}
 .btn-book .barrow svg{width:15px;height:15px}
 .htrust{display:flex;flex-wrap:wrap;gap:9px 26px;margin-top:30px}
-.htrust span{display:inline-flex;align-items:center;gap:9px;font-family:"Space Mono";font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.htrust span{display:inline-flex;align-items:center;gap:9px;font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .htrust span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow);flex:0 0 auto}
 .hero-esop{margin-top:26px;max-width:48ch;border-left:3px solid var(--yellow);padding:3px 0 3px 16px}
-.hero-esop b{display:block;font-family:"Archivo";font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;letter-spacing:.01em}
+.hero-esop b{display:block;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;letter-spacing:.01em}
 .hero-esop p{color:rgba(255,255,255,.76);font-size:13.5px;line-height:1.55;margin:0}
 .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:38px;position:relative}
 .how-sec{position:relative;background:linear-gradient(rgba(13,24,48,.9),rgba(20,35,66,.93)),url(../images/background-04.jpg) center/cover;overflow:hidden}
@@ -134,7 +134,7 @@
 .how-sec .how-steps::before{background:linear-gradient(90deg,rgba(255,255,255,.32),var(--orange))}
 .how-steps::before{content:"";position:absolute;top:27px;left:9%;right:9%;height:2px;background:linear-gradient(90deg,var(--blue),var(--orange));z-index:0}
 .hstep{position:relative;z-index:1}
-.hnum{width:54px;height:54px;border-radius:50%;background:linear-gradient(160deg,var(--blue),var(--ink-blue));color:var(--yellow);font-family:"Archivo";font-weight:900;font-size:22px;display:grid;place-items:center;box-shadow:0 12px 26px rgba(13,24,48,.2);margin-bottom:20px}
+.hnum{width:54px;height:54px;border-radius:50%;background:linear-gradient(160deg,var(--blue),var(--ink-blue));color:var(--yellow);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:22px;display:grid;place-items:center;box-shadow:0 12px 26px rgba(13,24,48,.2);margin-bottom:20px}
 .hstep h4{font-size:19px;font-weight:800;color:var(--blue-deep);margin:0 0 8px;letter-spacing:-.01em}
 .hstep p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
 .how-cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:18px}
@@ -204,18 +204,32 @@ body.home .brand{opacity:1;pointer-events:auto}
 
 /* ── the hero itself ────────────────────────────────────────────────────── */
 .hero.hero-light{
-  position:relative;display:block;overflow:hidden;color:var(--ink);
-  background:#fff;min-height:0;
-  padding:clamp(158px,19vh,202px) 0 clamp(54px,6vw,78px)}
+  position:relative;overflow:hidden;color:var(--ink);background:#fff;
+  /* fill the first screen; svh keeps mobile browser chrome from clipping it */
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;
+  padding:clamp(158px,19vh,202px) 0 clamp(72px,8vw,104px)}
 .hero-light .hl-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   overflow:hidden;
   background:url(../images/background-01.jpg) center/cover no-repeat;
-  opacity:.48}   /* <- the one number that sets how strongly the video reads */
+  opacity:.78}   /* <- the one number that sets how strongly the video reads */
 .hero-light .hl-vid{position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;display:block}
 @media(prefers-reduced-motion:reduce){.hero-light .hl-vid{display:none}}
+/* Two scrims instead of one: a soft wash from the left keeps the headline
+   column legible, while the right-hand side of the frame stays clear so the
+   video actually reads. The bottom fade hands off into the next section. */
 .hero-light::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.18),rgba(255,255,255,.78) 68%,rgba(255,255,255,.96) 100%)}
+  background:
+    linear-gradient(180deg,rgba(255,255,255,0) 68%,rgba(255,255,255,.72) 90%,#fff 100%),
+    linear-gradient(100deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.74) 34%,
+                    rgba(255,255,255,.34) 62%,rgba(255,255,255,.12) 100%)}
+@media(max-width:860px){
+  .hero-light::after{background:
+    linear-gradient(180deg,rgba(255,255,255,0) 72%,rgba(255,255,255,.74) 90%,#fff 100%),
+    linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.74) 48%,
+                    rgba(255,255,255,.52) 100%)}
+}
 .hl-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
   padding:0 var(--pad);text-align:left;
   display:flex;flex-direction:column;align-items:flex-start}
@@ -224,9 +238,9 @@ body.home .brand{opacity:1;pointer-events:auto}
 .hl-kick{display:block;width:92px;height:4px;border-radius:4px;
   background:var(--orange);margin:0 0 clamp(20px,2.4vw,28px)}
 
-.hl-title{font-family:"Archivo";font-weight:900;color:var(--ink-blue);
-  font-size:clamp(38px,6.4vw,76px);line-height:1.0;letter-spacing:-.035em;
-  margin:0;max-width:15ch}
+.hl-title{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;color:var(--ink-blue);
+  font-size:clamp(36px,5.9vw,70px);line-height:1.02;letter-spacing:-.035em;
+  margin:0;max-width:17ch}
 .hl-accent{color:var(--red)}
 .hl-lead{font-size:clamp(17px,2.1vw,23px);color:var(--muted);font-weight:600;
   margin:clamp(16px,2vw,22px) 0 clamp(28px,3.4vw,38px)}
@@ -244,14 +258,17 @@ body.home .brand{opacity:1;pointer-events:auto}
   animation-play-state:paused}
 .hl-primary svg{transition:transform .2s}
 .hl-primary:hover svg{transform:translateX(4px)}
+/* a 10px ring bled onto the button stacked beneath it on phones, so the
+   pulse breathes the drop shadow instead of throwing a wide halo */
 @keyframes hlpulse{
-  0%,100%{box-shadow:0 14px 34px rgba(196,42,42,.34)}
-  50%{box-shadow:0 14px 34px rgba(196,42,42,.34),0 0 0 10px rgba(196,42,42,.10)}}
-.hl-second{background:#fff;color:var(--blue-deep);border-color:var(--gray)}
-.hl-second:hover,.hl-second:focus-visible{border-color:var(--blue);color:var(--blue);
+  0%,100%{box-shadow:0 12px 26px rgba(196,42,42,.28)}
+  50%{box-shadow:0 14px 36px rgba(196,42,42,.44),0 0 0 5px rgba(196,42,42,.09)}}
+/* deliberately smaller than the primary - it is the secondary action */
+.hl-second{background:#fff;color:var(--red);border:2px solid var(--red);
+  font-size:15px;padding:13px 24px;flex:0 0 auto;box-shadow:none}
+.hl-second:hover,.hl-second:focus-visible{background:var(--red);color:#fff;
+  border-color:var(--red);
   transform:translateY(-3px);box-shadow:0 14px 30px rgba(16,28,58,.12)}
-.hl-second svg{transition:transform .2s}
-.hl-second:hover svg{transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){
   .hl-primary{animation:none}
   .hl-primary:hover,.hl-second:hover{transform:none}
@@ -262,15 +279,20 @@ body.home .brand{opacity:1;pointer-events:auto}
   max-width:640px;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:16px clamp(18px,3vw,34px)}
-.hl-points li{display:flex;align-items:center;gap:10px;
-  font-weight:700;font-size:clamp(14px,1.5vw,16px);color:var(--blue-deep);
+/* sits on top of moving video, so it gets its own quiet surface */
+.hl-points{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);
+  border:1px solid rgba(16,28,58,.09);border-radius:16px;
+  padding:18px clamp(18px,2.2vw,26px);
+  box-shadow:0 8px 26px rgba(16,28,58,.07)}
+.hl-points li{display:flex;align-items:center;gap:11px;
+  font-weight:700;font-size:clamp(15px,1.6vw,17px);color:var(--ink-blue);
   white-space:nowrap}
 .hl-points li::before{content:"";width:22px;height:22px;border-radius:50%;flex:0 0 auto;
   border:2px solid var(--orange);
   background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23876320' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/13px 13px no-repeat}
 
 .hl-serve{margin:clamp(30px,3.6vw,40px) 0 0;display:flex;align-items:center;gap:16px;
-  font-family:"Space Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--muted)}
 .hl-serve::before,.hl-serve::after{content:"";height:1px;width:clamp(26px,6vw,64px);
   background:var(--gray);flex:0 0 auto}
@@ -278,7 +300,7 @@ body.home .brand{opacity:1;pointer-events:auto}
 @media(max-width:860px){.hl-title{max-width:none}}
 @media(max-width:560px){
   .hero.hero-light{padding-top:clamp(112px,16vh,140px)}
-  .hl-cta{flex-direction:column;gap:12px}
+  .hl-cta{flex-direction:column;gap:16px}
   .hl-cta .btn{flex:1 1 auto;width:100%;font-size:16.5px;padding:18px 24px}
   .hl-points{gap:14px 18px}
   .hl-points li{font-size:14.5px}
@@ -292,13 +314,37 @@ body.home .brand{opacity:1;pointer-events:auto}
 .hl-intro-copy p{color:var(--muted);font-size:16.5px;line-height:1.72;margin:0;max-width:62ch}
 .hl-esop{background:linear-gradient(150deg,var(--blue-deep),var(--ink-blue));color:#fff;
   border-radius:22px;padding:clamp(28px,3.4vw,40px);box-shadow:0 26px 60px rgba(13,24,48,.18)}
-.hl-esop b{display:block;font-family:"Archivo";font-weight:800;font-size:19px;
+.hl-esop b{display:block;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:800;font-size:19px;
   margin:0 0 12px;letter-spacing:-.01em}
 .hl-esop p{color:rgba(255,255,255,.8);font-size:15px;line-height:1.62;margin:0}
 .hl-esop-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;
-  font-family:"Space Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   font-weight:700;color:var(--yellow)}
 .hl-esop-link:hover{color:#fff}
 .hl-esop-link svg{transition:transform .2s}
 .hl-esop-link:hover svg{transform:translateX(3px)}
 @media(max-width:900px){.hl-intro-grid{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE: the arrangement from the client's phone mockup — content packed
+   under the header rather than centred, and the serving line in sentence
+   case. Colours stay as Chris asked: white ground, full-colour logo.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media(max-width:860px){
+  /* the mockup sits its content just under the header rather than centred,
+     so on phones the hero stays full-height but packs to the top */
+  .hero.hero-light{align-items:flex-start;
+    padding-top:clamp(128px,17vh,152px)}
+
+  /* the stacked buttons go full width, but the secondary stays small */
+  .hl-cta .hl-second{width:auto;align-self:flex-start;
+    font-size:15px;padding:13px 22px}
+
+  /* the mockup reads this as a sentence, not a mono caps label. Darker than
+     desktop because on phones it sits over the brighter part of the video. */
+  .hl-serve{font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:14px;letter-spacing:.02em;text-transform:none;color:#3B4663}
+  .hl-serve::before,.hl-serve::after{background:rgba(59,70,99,.42)}
+}
+}
