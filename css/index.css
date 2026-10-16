@@ -153,3 +153,131 @@ header.scrolled ~ main .hero-logo{opacity:0;pointer-events:none}
 
 /* 320px: the two-up stat grid overflowed by 5px — stack it */
 @media (max-width:360px){.stats-float{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Homepage hero rebuild — Oct 2026, from Chris Newbury's feedback
+     white background + very low-opacity photo, full-colour logo at size,
+     headline promoted, CTAs given weight, welcome copy moved below.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* the hero is light now, so the header reads dark from the very top instead of
+   waiting for the scroll class to land */
+header::before{opacity:0}
+header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+  border-color:var(--hair);box-shadow:0 6px 24px rgba(16,28,58,.06)}
+header:not(.scrolled) .brand .l-navy{opacity:1}
+header:not(.scrolled) .brand .l-white{opacity:0}
+header:not(.scrolled) .menu a{color:var(--muted)}
+header:not(.scrolled) .menu a:hover,
+header:not(.scrolled) .menu a.nav-active{color:var(--blue)}
+/* needs .menu a.nav-cta: plain .nav-cta loses to the .menu a rule above it */
+header:not(.scrolled) .menu a.nav-cta{background:var(--red);color:#fff}
+header:not(.scrolled) .menu a.nav-cta:hover{background:var(--red-deep);color:#fff}
+header:not(.scrolled) .burger{color:var(--blue);border-color:var(--hair)}
+/* bigger brand mark — the client could not see the old one.
+   The old layout hid .brand above 1429px because the big .hero-logo sat in the
+   corner instead; that logo is gone now, so the brand has to come back at
+   every width or the header is left empty. */
+.hero-logo{display:none}
+body.home .brand{opacity:1;pointer-events:auto}
+.brand,.brand img,.brand .l-white,.brand .l-navy{height:88px}
+@media(max-width:1180px){.brand,.brand img,.brand .l-white,.brand .l-navy{height:70px}}
+@media(max-width:430px){.brand,.brand img,.brand .l-white,.brand .l-navy{height:58px}}
+
+/* ── the hero itself ────────────────────────────────────────────────────── */
+.hero.hero-light{
+  position:relative;display:block;overflow:hidden;color:var(--ink);
+  background:#fff;min-height:0;
+  padding:clamp(128px,15vh,168px) 0 clamp(54px,6vw,78px)}
+.hero-light .hl-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url(../images/background-01.jpg) center/cover no-repeat;
+  opacity:.09}
+.hero-light::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.35),rgba(255,255,255,.92) 68%,#fff 100%)}
+.hl-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
+  padding:0 var(--pad);text-align:left;
+  display:flex;flex-direction:column;align-items:flex-start}
+
+/* short rule above the headline, as in the mockup */
+.hl-kick{display:block;width:92px;height:4px;border-radius:4px;
+  background:var(--orange);margin:0 0 clamp(20px,2.4vw,28px)}
+
+.hl-title{font-family:"Archivo";font-weight:900;color:var(--ink-blue);
+  font-size:clamp(38px,6.4vw,76px);line-height:1.0;letter-spacing:-.035em;
+  margin:0;max-width:15ch}
+.hl-accent{color:var(--red)}
+.hl-lead{font-size:clamp(17px,2.1vw,23px);color:var(--muted);font-weight:600;
+  margin:clamp(16px,2vw,22px) 0 clamp(28px,3.4vw,38px)}
+
+/* ── calls to action ────────────────────────────────────────────────────── */
+.hl-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start;width:100%;
+  max-width:640px}
+.hl-cta .btn{flex:1 1 260px;justify-content:center;font-size:17px;
+  padding:19px 34px;border-radius:100px}
+.hl-primary{background:var(--red);color:#fff;position:relative;
+  box-shadow:0 14px 34px rgba(196,42,42,.34);
+  animation:hlpulse 2.6s ease-in-out infinite}
+.hl-primary:hover,.hl-primary:focus-visible{background:var(--red-deep);color:#fff;
+  transform:translateY(-3px);box-shadow:0 20px 44px rgba(196,42,42,.44);
+  animation-play-state:paused}
+.hl-primary svg{transition:transform .2s}
+.hl-primary:hover svg{transform:translateX(4px)}
+@keyframes hlpulse{
+  0%,100%{box-shadow:0 14px 34px rgba(196,42,42,.34)}
+  50%{box-shadow:0 14px 34px rgba(196,42,42,.34),0 0 0 10px rgba(196,42,42,.10)}}
+.hl-second{background:#fff;color:var(--blue-deep);border-color:var(--gray)}
+.hl-second:hover,.hl-second:focus-visible{border-color:var(--blue);color:var(--blue);
+  transform:translateY(-3px);box-shadow:0 14px 30px rgba(16,28,58,.12)}
+.hl-second svg{transition:transform .2s}
+.hl-second:hover svg{transform:translateX(4px)}
+@media(prefers-reduced-motion:reduce){
+  .hl-primary{animation:none}
+  .hl-primary:hover,.hl-second:hover{transform:none}
+  .hl-primary svg,.hl-second svg{transition:none}}
+
+/* ── the four selling points ────────────────────────────────────────────── */
+.hl-points{list-style:none;margin:clamp(30px,3.6vw,42px) 0 0;padding:0;width:100%;
+  max-width:640px;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px clamp(18px,3vw,34px)}
+.hl-points li{display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:clamp(14px,1.5vw,16px);color:var(--blue-deep);
+  white-space:nowrap}
+.hl-points li::before{content:"";width:22px;height:22px;border-radius:50%;flex:0 0 auto;
+  border:2px solid var(--orange);
+  background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23876320' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/13px 13px no-repeat}
+
+.hl-serve{margin:clamp(30px,3.6vw,40px) 0 0;display:flex;align-items:center;gap:16px;
+  font-family:"Space Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted)}
+.hl-serve::before,.hl-serve::after{content:"";height:1px;width:clamp(26px,6vw,64px);
+  background:var(--gray);flex:0 0 auto}
+
+@media(max-width:860px){.hl-title{max-width:none}}
+@media(max-width:560px){
+  .hero.hero-light{padding-top:clamp(112px,16vh,140px)}
+  .hl-cta{flex-direction:column;gap:12px}
+  .hl-cta .btn{flex:1 1 auto;width:100%;font-size:16.5px;padding:18px 24px}
+  .hl-points{gap:14px 18px}
+  .hl-points li{font-size:14.5px}
+}
+
+/* ── the welcome copy, moved out of the hero ────────────────────────────── */
+.hl-intro{background:var(--soft-2)}
+.hl-intro-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(30px,4.4vw,72px);align-items:start}
+.hl-intro-copy .sec-title{font-size:clamp(26px,3.2vw,40px);margin:0 0 20px;max-width:20ch}
+.hl-intro-copy p{color:var(--muted);font-size:16.5px;line-height:1.72;margin:0;max-width:62ch}
+.hl-esop{background:linear-gradient(150deg,var(--blue-deep),var(--ink-blue));color:#fff;
+  border-radius:22px;padding:clamp(28px,3.4vw,40px);box-shadow:0 26px 60px rgba(13,24,48,.18)}
+.hl-esop b{display:block;font-family:"Archivo";font-weight:800;font-size:19px;
+  margin:0 0 12px;letter-spacing:-.01em}
+.hl-esop p{color:rgba(255,255,255,.8);font-size:15px;line-height:1.62;margin:0}
+.hl-esop-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+  font-family:"Space Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--yellow)}
+.hl-esop-link:hover{color:#fff}
+.hl-esop-link svg{transition:transform .2s}
+.hl-esop-link:hover svg{transform:translateX(3px)}
+@media(max-width:900px){.hl-intro-grid{grid-template-columns:1fr}}
