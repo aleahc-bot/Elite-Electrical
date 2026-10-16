@@ -241,13 +241,17 @@ body.home .brand{opacity:1;pointer-events:auto}
 .hl-title{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;color:var(--ink-blue);
   font-size:clamp(36px,5.9vw,70px);line-height:1.02;letter-spacing:-.035em;
   margin:0;max-width:17ch}
-.hl-accent{color:var(--red)}
+/* block, so "Instant Online Booking" always starts its own line instead of
+   trailing after "Upfront Pricing." and breaking mid-phrase */
+.hl-accent{color:var(--red);display:block}
 .hl-lead{font-size:clamp(17px,2.1vw,23px);color:var(--muted);font-weight:600;
   margin:clamp(16px,2vw,22px) 0 clamp(28px,3.4vw,38px)}
 
 /* ── calls to action ────────────────────────────────────────────────────── */
-.hl-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start;width:100%;
-  max-width:640px}
+/* align-items:center, or the flex default (stretch) forces the secondary to
+   match the primary height and it stops reading as the smaller button */
+.hl-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  justify-content:flex-start;width:100%;max-width:640px}
 .hl-cta .btn{flex:1 1 260px;justify-content:center;font-size:17px;
   padding:19px 34px;border-radius:100px}
 .hl-primary{background:var(--red);color:#fff;position:relative;
@@ -264,8 +268,9 @@ body.home .brand{opacity:1;pointer-events:auto}
   0%,100%{box-shadow:0 12px 26px rgba(196,42,42,.28)}
   50%{box-shadow:0 14px 36px rgba(196,42,42,.44),0 0 0 5px rgba(196,42,42,.09)}}
 /* deliberately smaller than the primary - it is the secondary action */
-.hl-second{background:#fff;color:var(--red);border:2px solid var(--red);
-  font-size:15px;padding:13px 24px;flex:0 0 auto;box-shadow:none}
+/* needs .hl-cta to outrank `.hl-cta .btn` above, which sets 17px/20px padding */
+.hl-cta .hl-second{background:#fff;color:var(--red);border:2px solid var(--red);
+  font-size:16px;padding:16px 30px;flex:0 1 auto;box-shadow:none}
 .hl-second:hover,.hl-second:focus-visible{background:var(--red);color:#fff;
   border-color:var(--red);
   transform:translateY(-3px);box-shadow:0 14px 30px rgba(16,28,58,.12)}
@@ -326,6 +331,32 @@ body.home .brand{opacity:1;pointer-events:auto}
 @media(max-width:900px){.hl-intro-grid{grid-template-columns:1fr}}
 
 
+/* ── homepage reviews block (cards themselves are styled by site.css) ───── */
+.hl-revs{padding:clamp(56px,7vw,86px) 0}
+.hl-rs{position:relative}
+.hl-revs-cta{margin-top:clamp(26px,3vw,38px)}
+.hl-nav{display:none}
+@media(max-width:900px) and (min-width:761px){.hl-revs .tgrid{grid-template-columns:1fr 1fr}}
+
+/* phones: swipe instead of a very long scroll. The track bleeds past the
+   wrap gutters so the neighbouring cards peek in either side. */
+@media(max-width:760px){
+  .hl-revs .tgrid{display:flex;grid-template-columns:none;gap:14px;
+    overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-inline:calc(var(--pad) * -1);padding:2px 11vw 6px;
+    scrollbar-width:none}
+  .hl-revs .tgrid::-webkit-scrollbar{display:none}
+  .hl-revs .tc{flex:0 0 78vw;scroll-snap-align:center;margin:0}
+  .hl-nav{display:grid;place-items:center;position:absolute;top:50%;
+    transform:translateY(-50%);width:40px;height:40px;border-radius:50%;
+    background:#fff;border:1px solid var(--hair);color:var(--blue-deep);
+    box-shadow:0 6px 18px rgba(16,28,58,.14);cursor:pointer;z-index:3;padding:0}
+  .hl-nav svg{width:20px;height:20px}
+  .hl-nav.prev{left:-6px}
+  .hl-nav.next{right:-6px}
+  .hl-nav:disabled{opacity:.28;pointer-events:none}
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    MOBILE: the arrangement from the client's phone mockup — content packed
    under the header rather than centred, and the serving line in sentence
@@ -337,9 +368,14 @@ body.home .brand{opacity:1;pointer-events:auto}
   .hero.hero-light{align-items:flex-start;
     padding-top:clamp(128px,17vh,152px)}
 
-  /* the stacked buttons go full width, but the secondary stays small */
-  .hl-cta .hl-second{width:auto;align-self:flex-start;
-    font-size:15px;padding:13px 22px}
+  /* "Instant Online Booking" was breaking with "Booking" alone on its own
+     line; scale the headline down on phones so the phrase stays intact */
+  .hl-title{font-size:clamp(27px,7.6vw,46px)}
+
+  /* the two buttons read as a pair, so they share a width - the secondary is
+     smaller by height and type weight rather than by being narrower */
+  .hl-cta .hl-second{width:100%;align-self:stretch;
+    font-size:16px;padding:15px 24px}
 
   /* the mockup reads this as a sentence, not a mono caps label. Darker than
      desktop because on phones it sits over the brighter part of the video. */
