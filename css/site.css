@@ -582,3 +582,34 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
   .fab-call:hover,.fab-call:focus-visible{transform:none}
 }
 @media print{.fab-call{display:none}}
+
+/* ── header mark ─────────────────────────────────────────────────────────
+   The full-colour logo is wider and taller than the old mono one, so the nav
+   bar grows with it, and the mobile menu's top offset (pinned to the old
+   84px bar) has to follow or it opens underneath the header. */
+.nav{height:136px}
+.brand,.brand img,.brand .l-white,.brand .l-navy{height:124px}
+@media(max-width:1180px){
+  .nav{height:118px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:106px}
+  .menu{inset:118px 0 auto 0;max-height:calc(100vh - 118px);max-height:calc(100dvh - 118px)}
+}
+@media(max-width:430px){
+  .nav{height:110px;padding-left:16px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:98px}
+  .menu{inset:110px 0 auto 0;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}
+}
+@media(max-width:340px){
+  .nav{height:94px}
+  .brand,.brand img,.brand .l-white,.brand .l-navy{height:82px}
+  .menu{inset:94px 0 auto 0;max-height:calc(100dvh - 94px)}
+}
+
+/* The white mark (shown over dark heroes until the header turns white) is a
+   WIDER crop than the colour one - 3.72:1 against 3.00:1. Matching heights
+   runs it into the nav links and the burger, so match widths instead: about
+   79% of the colour mark's height, and re-centre it since it is absolute. */
+.brand .l-white{top:50%;transform:translateY(-50%);height:98px}
+@media(max-width:1180px){.brand .l-white{height:84px}}
+@media(max-width:430px){.brand .l-white{height:77px}}
+@media(max-width:340px){.brand .l-white{height:65px}}

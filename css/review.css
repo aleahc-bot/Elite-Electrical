@@ -1,7 +1,5 @@
 /* review — per-employee feedback pages */
 @media (max-width:1180px){.nav-dd{flex-direction:column;align-items:flex-start;width:100%}.nav-dd .caret{display:none}.nav-dd .dd{position:static;opacity:1;visibility:visible;transform:none;margin:8px 0 0;padding:0 0 0 14px;background:transparent;border:none;box-shadow:none;min-width:0;border-left:1px solid rgba(255,255,255,.18)}.nav-dd::after{display:none}.menu .nav-dd .dd a{color:rgba(255,255,255,.82);padding:8px 0}.menu .nav-dd .dd a:hover{background:transparent;color:#fff}}
-@media (max-width:430px){.brand,.brand img,.brand .l-white{height:44px}}
-@media (max-width:340px){.brand,.brand img,.brand .l-white{height:38px}}
 @media (max-width:1429px){.hero-logo{display:none}body.home .brand{opacity:1;pointer-events:auto}}
 @media (max-width:1180px){
   .menu{position:fixed;inset:84px 0 auto 0;flex-direction:column;background:var(--ink-blue);padding:22px var(--pad) 30px;gap:22px;align-items:flex-start;transform:translateY(-130%);transition:transform .3s;height:auto;max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -42,7 +40,7 @@
 
 .rv-btns{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:420px}
 .rv-btns .btn{width:100%;justify-content:center}
-.rv-note{font-family:"Space Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+.rv-note{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);margin:34px 0 0;padding-top:26px;border-top:1px solid var(--hair);
   width:100%;max-width:420px}
 @media(max-width:560px){.rv-mark{display:none}}

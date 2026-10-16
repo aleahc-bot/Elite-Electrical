@@ -1,7 +1,5 @@
 /* index — page-specific styles */
 @media (max-width:1180px){.nav-dd{flex-direction:column;align-items:flex-start;width:100%}.nav-dd .caret{display:none}.nav-dd .dd{position:static;opacity:1;visibility:visible;transform:none;margin:8px 0 0;padding:0 0 0 14px;background:transparent;border:none;box-shadow:none;min-width:0;border-left:1px solid rgba(255,255,255,.18)}.nav-dd::after{display:none}.menu .nav-dd .dd a{color:rgba(255,255,255,.82);padding:8px 0}.menu .nav-dd .dd a:hover{background:transparent;color:#fff}}
-@media (max-width:430px){.brand,.brand img,.brand .l-white{height:44px}}
-@media (max-width:340px){.brand,.brand img,.brand .l-white{height:38px}}
 @media (max-width:1429px){.hero-logo{display:none}body.home .brand{opacity:1;pointer-events:auto}}
 @media (max-width:1180px){
   .menu{position:fixed;inset:84px 0 auto 0;flex-direction:column;background:var(--ink-blue);padding:22px var(--pad) 30px;gap:22px;align-items:flex-start;transform:translateY(-130%);transition:transform .3s;height:auto;max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -181,26 +179,8 @@ header:not(.scrolled) .burger{color:var(--blue);border-color:var(--hair)}
    every width or the header is left empty. */
 .hero-logo{display:none}
 body.home .brand{opacity:1;pointer-events:auto}
-/* Big header mark, to the size in the client's reference. The nav bar has to
-   grow with it, and so does the mobile menu's top offset (it is pinned to the
-   old 84px bar) and the hero's top padding, or the headline sits under it. */
-.nav{height:136px}
-.brand,.brand img,.brand .l-white,.brand .l-navy{height:124px}
-@media(max-width:1180px){
-  .nav{height:118px}
-  .brand,.brand img,.brand .l-white,.brand .l-navy{height:106px}
-  .menu{inset:118px 0 auto 0;max-height:calc(100vh - 118px);max-height:calc(100dvh - 118px)}
-}
-@media(max-width:430px){
-  .nav{height:110px;padding-left:16px}
-  .brand,.brand img,.brand .l-white,.brand .l-navy{height:98px}
-  .menu{inset:110px 0 auto 0;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}
-}
-@media(max-width:340px){
-  .nav{height:94px}
-  .brand,.brand img,.brand .l-white,.brand .l-navy{height:82px}
-  .menu{inset:94px 0 auto 0;max-height:calc(100dvh - 94px)}
-}
+/* The header mark now lives in site.css so every page gets it - see the
+   'header mark' block there. Nothing page-specific is needed here. */
 
 /* ── the hero itself ────────────────────────────────────────────────────── */
 .hero.hero-light{
