@@ -217,6 +217,19 @@
 }
 .bd-shots .ph { border: 1px dashed var(--hair); border-radius: 10px; }
 
+/* real community photo in the card's 16:10 slot, replacing the .ph stand-in */
+.cm-thumb {
+  display: block; width: 100%; aspect-ratio: 16/10; overflow: hidden;
+  border-bottom: 1px solid var(--hair); background: var(--soft);
+}
+.cm-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+.cm-card:hover .cm-thumb img { transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .cm-thumb img { transition: none; }
+  .cm-card:hover .cm-thumb img { transform: none; } }
+
 .bd-empty {
   border: 1px dashed var(--hair); border-radius: 16px; background: #fff;
   padding: clamp(26px,3vw,40px); text-align: center;

@@ -3,10 +3,10 @@
    so a global change is a one-file change. Page-specific rules are in
    css/<page>.css. Design tokens are the CSS variables in :root below. */
 :root{
-  --blue:#2A4A84;
-  --blue-deep:#1B2E56;
-  --ink-blue:#0D1830;      /* cinematic deep */
-  --blue-grad:#22406F;
+  --blue:#2558AA;--blue-bright:#0B63E0;
+  --blue-deep:#16325E;
+  --ink-blue:#0A1835;      /* cinematic deep */
+  --blue-grad:#1E4480;
   --orange:#B4862F;
   --orange-bright:#CBA047;
   --orange-deep:#876320;
@@ -14,12 +14,12 @@
   --yellow-deep:#9A7524;
   --red:#C42A2A;
   --red-deep:#9E1F1F;
-  --gray:#C4C7D0;
-  --soft:#F1F4F9;
+  --gray:#C2C7D3;
+  --soft:#F0F4FA;
   --soft-2:#F8F9FC;
-  --hair:#E6E9F1;
-  --ink:#172239;
-  --muted:#58607A;
+  --hair:#E4E9F2;
+  --ink:#15213A;
+  --muted:#566080;
   --white:#FFFFFF;
   --maxw:1200px;
   --pad:clamp(22px,5vw,92px);
