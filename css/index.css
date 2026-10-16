@@ -84,7 +84,7 @@
 @media(max-width:760px){.tcard2.elcard{grid-template-columns:1fr;gap:22px}}
 @media (max-width:820px){.tcards{grid-template-columns:1fr}}
 .why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}
-.wcard .wn{position:absolute;top:18px;right:22px;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:40px;line-height:1;letter-spacing:-.02em;color:rgba(180,134,47,.16);z-index:0}
+.wcard .wn{position:absolute;top:18px;right:22px;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:900;font-size:40px;line-height:1;letter-spacing:-.02em;color:rgba(11,99,224,.16);z-index:0}
 .wcard .wi,.wcard h4,.wcard p{position:relative;z-index:1}
 .wcard .wi{width:52px;height:52px;border-radius:14px;background:linear-gradient(160deg,var(--blue),var(--ink-blue));border:none;display:grid;place-items:center;color:var(--yellow);margin-bottom:20px;box-shadow:0 12px 24px rgba(13,24,48,.16)}
 @media (max-width:900px){.why{grid-template-columns:1fr 1fr}}
@@ -101,7 +101,7 @@
 .hbadges{position:absolute;top:clamp(112px,15vh,172px);right:var(--pad);z-index:3;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
 .hbadge{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.65);border-radius:16px;padding:13px 18px;box-shadow:0 20px 44px rgba(13,24,48,.30);max-width:280px}
 .hbadge .hi{width:40px;height:40px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;background:var(--soft);color:var(--blue)}
-.hbadge.gold .hi{background:rgba(180,134,47,.15);color:var(--orange-deep)}
+.hbadge.gold .hi{background:rgba(11,99,224,.15);color:var(--orange-deep)}
 .hbadge .hi svg{width:20px;height:20px}
 .hbadge b{display:block;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:800;font-size:14.5px;color:var(--ink-blue);letter-spacing:-.01em;line-height:1.12}
 .hbadge small{display:block;font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:4px}
@@ -164,8 +164,6 @@ header.scrolled ~ main .hero-logo{opacity:0;pointer-events:none}
 header::before{opacity:0}
 header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
   border-color:var(--hair);box-shadow:0 6px 24px rgba(16,28,58,.06)}
-header:not(.scrolled) .brand .l-navy{opacity:1}
-header:not(.scrolled) .brand .l-white{opacity:0}
 header:not(.scrolled) .menu a{color:var(--muted)}
 header:not(.scrolled) .menu a:hover,
 header:not(.scrolled) .menu a.nav-active{color:var(--blue)}
@@ -274,7 +272,7 @@ body.home .brand{opacity:1;pointer-events:auto}
   white-space:nowrap}
 .hl-points li::before{content:"";width:22px;height:22px;border-radius:50%;flex:0 0 auto;
   border:2px solid var(--orange);
-  background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23876320' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/13px 13px no-repeat}
+  background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A4BAE' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/13px 13px no-repeat}
 
 .hl-serve{margin:clamp(30px,3.6vw,40px) 0 0;display:flex;align-items:center;gap:16px;
   font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;

@@ -12,8 +12,6 @@
 /* the page sits under a light header, so the mark is the colour one from the start */
 header::before{opacity:0}
 header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-color:var(--hair)}
-header:not(.scrolled) .brand .l-navy{opacity:1}
-header:not(.scrolled) .brand .l-white{opacity:0}
 header:not(.scrolled) .menu a{color:var(--muted)}
 header:not(.scrolled) .menu a:hover,header:not(.scrolled) .menu a.nav-active{color:var(--blue)}
 header:not(.scrolled) .menu a.nav-cta{background:var(--red);color:#fff}
