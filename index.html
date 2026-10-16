@@ -165,9 +165,9 @@
   <div class="hl-cta">
     <!-- BOOKING LINKS: both point at the Housecall Pro URL set in build_home.py -->
     <a class="btn hl-primary" href="https://book.housecallpro.com/book/Bay-Rise-Electric-LLC/57393ec46f57423a9667ff74d251c8f2?v2=true" target="_blank" rel="noopener" onclick="if(window.HCPWidget){HCPWidget.openModal();return false}">Book Online Now<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <!-- TODO: needs the Housecall Pro customer-portal URL; pointed at the
-         booking link for now so it is not a dead control -->
-    <a class="btn hl-second" href="https://book.housecallpro.com/book/Bay-Rise-Electric-LLC/57393ec46f57423a9667ff74d251c8f2?v2=true" target="_blank" rel="noopener" onclick="if(window.HCPWidget){HCPWidget.openModal();return false}">Existing customer sign in</a>
+    <!-- Housecall Pro customer portal. Theirs ships as a <button> with an
+         inline window.open; a real href works without JS and is crawlable. -->
+    <a class="btn hl-second" href="https://client.housecallpro.com/customer_portal/request-link?token=e47440b406f14b11aa9d03ed0cd7a147" target="_blank" rel="noopener">Existing Customer Sign In</a>
   </div>
 
   <ul class="hl-points">
@@ -204,6 +204,69 @@
   <div class="sf"><div class="k">1</div><div class="l">Trade: Residential &middot; Commercial</div></div>
 </div></div></div>
 
+
+
+<!-- ── Customer reviews, moved above "Why choose Elite?" ───────────────────
+     Cards reuse .tgrid/.tc/.stars/.qmark/.q/.who from site.css, so this
+     section needs no CSS of its own. -->
+<section class="hl-revs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="ln"></span>What our customers say</span>
+      <h2 class="sec-title">Trusted across Southwest Florida.</h2>
+    </div>
+    <div class="hl-rs">
+      <div class="tgrid" id="hlRevGrid">
+      <div class="tc reveal"><span class="qmark">&rdquo;</span><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div>
+        <div class="q">High quality, top to bottom.</div>
+        <p>High quality &mdash; from customer service to workmanship, reliability to cost. Chipper and the team have earned our trust over and over.</p>
+        <div class="who"><div class="av">R</div><div><b>Robert Harrison</b><span>Residential</span></div></div>
+      </div>
+      <div class="tc reveal"><span class="qmark">&rdquo;</span><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div>
+        <div class="q">Local, knowledgeable, on time.</div>
+        <p>Elite Electrical are fantastic &mdash; local, knowledgeable, and always on time for the job. Exactly what you want from an electrician.</p>
+        <div class="who"><div class="av">S</div><div><b>Sterling Gould</b><span>Residential</span></div></div>
+      </div>
+      <div class="tc reveal"><span class="qmark">&rdquo;</span><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div>
+        <div class="q">Competitive and comprehensive.</div>
+        <p>We were referred to Elite by a neighbor. We got three quotes, and even though Elite was not the cheapest, theirs was the most comprehensive.</p>
+        <div class="who"><div class="av">C</div><div><b>Carolyn DiCarlo</b><span>Residential</span></div></div>
+      </div>
+      </div>
+      <button class="hl-nav prev" type="button" aria-label="Previous review" aria-controls="hlRevGrid">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hl-nav next" type="button" aria-label="Next review" aria-controls="hlRevGrid">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="hl-revs-cta reveal">
+      <a class="btn btn-dark" href="reviews.html">Read all reviews<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+<script>
+/* Homepage reviews: horizontal snap-scroller on phones. The arrows just step
+   the scroll position, so swipe and tap stay in sync and it degrades to a
+   plain scroller if this script never runs. */
+(function(){
+  var grid=document.getElementById('hlRevGrid'); if(!grid) return;
+  var shell=grid.closest('.hl-rs');
+  var prev=shell.querySelector('.hl-nav.prev'), next=shell.querySelector('.hl-nav.next');
+  var cards=[].slice.call(grid.querySelectorAll('.tc'));
+  function step(){ return cards.length>1 ? cards[1].offsetLeft-cards[0].offsetLeft : grid.clientWidth; }
+  function sync(){
+    var max=grid.scrollWidth-grid.clientWidth-2;
+    prev.disabled = grid.scrollLeft<=2;
+    next.disabled = grid.scrollLeft>=max;
+  }
+  prev.addEventListener('click',function(){grid.scrollBy({left:-step(),behavior:'smooth'});});
+  next.addEventListener('click',function(){grid.scrollBy({left: step(),behavior:'smooth'});});
+  grid.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',sync);
+  sync();
+})();
+</script>
 <section style="background:var(--soft-2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow"><span class="ln"></span>Why Elite</span><h2 class="sec-title">Why choose Elite?</h2></div>
@@ -313,6 +376,8 @@
 </footer>
 
 <script src="js/index.js"></script>
+<!-- floating click-to-call -->
+<a class="fab-call" href="tel:+12395611314" aria-label="Call Elite Electrical at 239.561.1314"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>239.561.1314</span></a>
 <!-- Housecall Pro online booking -->
 <script async src="https://online-booking.housecallpro.com/script.js?token=57393ec46f57423a9667ff74d251c8f2&orgName=Elite-Electrical-Contractors-inc"></script>
 </body>
