@@ -200,12 +200,49 @@
   background: var(--blue); color: #fff; transform: translateX(3px);
 }
 
-/* ---- empty image slots (artwork supplied later) */
+/* ---- builder logo tiles
+   Each mark is supplied by the builder and sits on a plain white tile with
+   generous padding, so fourteen logos of wildly different proportions - a
+   long wordmark like Lennar next to a near-square one like Pulte - all read
+   at a similar visual weight. object-fit:contain never crops or distorts. */
+/* position:absolute on the inner picture is deliberate: a tall logo inside a
+   grid/flex box can push past aspect-ratio and make one card taller than its
+   neighbours. Taking the image out of flow pins every tile to the same height. */
 .bd-logo {
-  display: block; width: 100%; aspect-ratio: 16/7;
+  position: relative; display: block; overflow: hidden;
+  width: 100%; aspect-ratio: 16/10;
   border-bottom: 1px solid var(--hair); background: #fff;
 }
-.bd-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.bd-logo .bd-mark {
+  position: absolute; inset: 0; display: block;
+  width: 100%; height: 100%; box-sizing: border-box;
+  padding: clamp(13px, 1.7vw, 22px);
+  object-fit: contain; object-position: center;
+  transition: transform .25s;
+}
+.bd-card:hover .bd-mark,
+.bd-card:focus-visible .bd-mark { transform: scale(1.035); }
+@media (prefers-reduced-motion: reduce) {
+  .bd-mark { transition: none }
+  .bd-card:hover .bd-mark { transform: none }
+}
+/* Stock's mark is gold on black, so the tile goes black rather than leaving
+   a floating black bar in the middle of a white card. */
+.bd-brand.bd-dark { background: #000; }
+
+/* legacy monogram fallback - only shows if a logo file is ever missing */
+.bd-mono {
+  display: grid; place-items: center;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(37,88,170,.07), rgba(37,88,170,0) 70%),
+    var(--soft);
+}
+.bd-ini {
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 900; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -.03em;
+  color: var(--blue-deep); opacity: .34; user-select: none;
+}
+.bd-mono img { display: none }
 .ph {
   aspect-ratio: var(--r,16/9); width: 100%; display: grid; place-items: center;
   background: repeating-linear-gradient(135deg,#F7F9FC 0 10px,#F1F4F9 10px 20px);
@@ -336,4 +373,15 @@
   }
   .bd-info-empty { padding: 26px 22px; }
 }
-@media (max-width: 420px) { .bd-grid, .cm-grid { grid-template-columns: 1fr; } }
+/* Community cards carry a photo and a town line, so they go full width on a
+   phone. Builder cards are just a logo and a name - keeping them two across
+   stops fourteen of them turning into a very long scroll. */
+@media (max-width: 420px) {
+  .cm-grid { grid-template-columns: 1fr; }
+  .bd-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+  .bd-card-foot { padding: 10px 11px 11px; }
+  .bd-name { font-size: 13.5px; }
+  .bd-count { font-size: 10.5px; }
+  .bd-arrow { width: 26px; height: 26px; }
+  .bd-arrow svg { width: 13px; height: 13px; }
+}
