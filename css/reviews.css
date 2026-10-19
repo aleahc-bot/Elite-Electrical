@@ -72,6 +72,8 @@
 .rsum{background:linear-gradient(130deg,var(--blue),var(--ink-blue));border-color:transparent;box-shadow:0 24px 60px rgba(13,24,48,.2)}
 .rsum .big{color:#fff}
 .rsum .rmeta{color:rgba(255,255,255,.72)}
+/* the summary card is navy here, so the stars take the brighter gold */
+.rsum .rstars svg{color:var(--gold-bright)}
 .rev-cta{margin-left:auto}
 @media (max-width:640px){.rev-cta{margin-left:0;width:100%;justify-content:center}}
 .tc.sample{border:1.5px dashed var(--gray);background:var(--soft-2)}
