@@ -4,6 +4,20 @@
    twice is harmless - the guard below makes it run once. */
 if (!window.__eliteBar) { window.__eliteBar = 1;
 
+/* ───────────────────────────────────────────────────────────────────────────
+   STICKY ACTION BAR  (Oct 19 meeting)
+
+   Every page gets a bar across the bottom once you scroll past the top of
+   the page, so the booking link is never more than a thumb away.
+
+   Two exceptions, both deliberate: New Construction and Commercial are
+   trade enquiries, not jobs you book through Housecall Pro, so those two
+   pages get CALL + EMAIL in the same slot instead.
+
+   It is built here rather than in the page markup for one reason - this
+   file is loaded by every page on the site, so the bar appears on all of
+   them at once, including pages that have not otherwise been touched.
+   ─────────────────────────────────────────────────────────────────────── */
 (function(){
   if(document.getElementById('actionbar')) return;
 
@@ -41,9 +55,11 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
   document.body.appendChild(bar);
   document.body.classList.add('has-actionbar');
 
-  /* ON A PHONE the bar is always there, from the moment the page loads.
-     ON A LARGER SCREEN it waits until you have scrolled past the hero so it
-     does not sit on top of the homepage's own Book Online button. */
+  /* ON A PHONE the bar is always there, from the moment the page loads -
+     it is the thing people reach for and it should never need hunting.
+     ON A LARGER SCREEN the homepage hero already carries a big Book Online
+     button, so the bar waits until you have scrolled past it rather than
+     sitting on top of it. 860px is the cut: below that, always on. */
   var small = window.matchMedia('(max-width: 860px)');
   var hero  = document.querySelector('.hero, .page-banner');
 
@@ -82,7 +98,8 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
     }
   }
 
-  /* Any Book Now left anywhere in a page's body is brought into line here. */
+  /* Any Book Now left anywhere in a page's body - there are a few, and ten
+     pages are not in the working copy yet - is brought into line here. */
   document.querySelectorAll('main a, footer a').forEach(function(a){
     if(a.textContent.trim().toLowerCase().indexOf('book now') !== 0) return;
     if(trade){
@@ -108,10 +125,16 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
   }
 })();
 
-/* SERVICES MENU — one shape on every page.
-   Residential and Repairs & Service are one entry now; Generators is gone.
-   This normalises the dropdown at load on any page still carrying the old
-   markup, and is a harmless no-op on pages already updated. */
+/* ───────────────────────────────────────────────────────────────────────────
+   SERVICES MENU — one shape on every page  (Oct 19 meeting)
+
+   Residential and Repairs & Service are the same work, so they are one
+   entry now; Generators is gone. The markup is fixed in the pages I hold,
+   but ten pages are not in the working copy yet, and a menu that changes
+   shape depending on which page you are on looks broken. This normalises
+   the dropdown at load, and is a harmless no-op on pages already updated.
+   Delete this block once every page carries the new markup.
+   ─────────────────────────────────────────────────────────────────────── */
 (function(){
   var dd=document.querySelector('.nav-dd .dd');
   if(!dd) return;
@@ -120,8 +143,14 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
     if(href.indexOf('services-generators')>-1 || href.indexOf('services-repairs')>-1){
       a.remove(); return;
     }
-    if(href.indexOf('services-residential')>-1 && a.textContent.trim()==='Residential'){
-      a.textContent='Residential, Repairs & Service';
+    /* Matches the bare 'Residential' on pages never updated, and the earlier
+       comma wording on pages updated before the label was settled. Leaves the
+       correct label alone so this is a no-op once every page carries it. */
+    if(href.indexOf('services-residential')>-1){
+      var t=a.textContent.trim();
+      if(t!=='Residential/Repairs & Service' && /^Residential\b/.test(t)){
+        a.textContent='Residential/Repairs & Service';
+      }
     }
   });
 })();

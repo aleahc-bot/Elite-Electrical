@@ -45,3 +45,13 @@ if(f){f.addEventListener('submit',function(ev){ev.preventDefault();
   var y=document.getElementById('yr');
   if(y) y.textContent=new Date().getFullYear();
 })();
+
+/* The bottom action bar and the services-menu fix live in their own file so
+   the homepage (which loads js/index.js, not this one) can pull in exactly
+   the same code. Loading it twice is a no-op. */
+(function(){
+  if(window.__eliteBar) return;
+  var s=document.createElement('script');
+  s.src='js/actionbar.js'; s.defer=true;
+  document.head.appendChild(s);
+})();
