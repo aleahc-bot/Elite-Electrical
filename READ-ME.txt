@@ -1,0 +1,137 @@
+UPLOAD 2 — the services pages, the contact page, the floating button
+====================================================================
+9 files. Two drops.
+
+
+DROP 1 — repo ROOT  (8 .html files)
+--------------------------------------------------------------------
+  contact.html                  services-panel-upgrades.html
+  index.html                    services-repairs.html
+  services.html                 services-residential.html
+  services-commercial.html      services-lighting.html
+
+  Top level of the repo. Add file > Upload files, drag all 8, commit.
+
+
+DROP 2 — the  css  folder  (1 file)
+--------------------------------------------------------------------
+  site.css
+
+  Click INTO the existing css folder first, so the breadcrumb reads
+  <repo> / css. Then upload and commit.
+
+
+STILL OUTSTANDING FROM BEFORE
+--------------------------------------------------------------------
+  js/site.js   is still the old version in the repo. actionbar.js is
+  up and the homepage works, but site.js is what carries the bar to
+  careers, reviews, story and the technician pages. Replace it when
+  you get a minute - it is in ELITE-JS-FILES.
+
+  services-generators.html still needs deleting from the repo root.
+  Nothing links to it now.
+
+
+=====================================================================
+THE FLOATING BUTTON — restyled
+=====================================================================
+The navy bar is gone. The buttons float on their own over whatever is
+behind them, so no slab of colour cuts the page off.
+
+The red pill carries a soft red aura that drifts around it and
+breathes, deliberately slow - six seconds a lap - so it reads as alive
+without pulling your eye off the page. It stops completely for anyone
+whose device is set to reduced motion.
+
+The second button is solid navy now rather than a translucent outline,
+because without the bar behind it an outline button would disappear on
+a white page.
+
+The gap between the two buttons is click-through, so the bar never
+blocks anything underneath it.
+
+
+=====================================================================
+THE SEVEN LEGACY PAGES — brought in line
+=====================================================================
+These pages were a different generation to the rest of the site: all
+their CSS and JavaScript written inline, never loading css/site.css or
+js/site.js. That is why they still showed Generators, the old gold
+palette and the old logo, and why the floating button never reached
+them. Each one now has:
+
+  * the new logo, as a file rather than two base64 images baked into
+    the page. That alone takes roughly 100KB off every page.
+  * the current palette - gold and the old blues out, the logo's blue
+    and silver in
+  * the corrected services menu
+  * BOOK ONLINE in the header, pointing at the real booking link
+    (CONTACT US on Commercial)
+  * the floating button
+
+  Each page dropped from ~337KB to ~239KB.
+
+
+PAGE BY PAGE
+--------------------------------------------------------------------
+services.html
+    Seven service cards became five. Generators removed. Residential
+    and Repairs & Service merged into one card, renumbered 01-05.
+    "Home Generators" also removed from the services checklist.
+
+services-residential.html
+    Now "Residential, Repairs & Service". Carries both sets of work:
+    panel upgrades, rewires, lighting, outlets, plus troubleshooting,
+    repairs, breaker issues, safety inspections and same-week service.
+    A second paragraph covers the repairs side. Title tag updated.
+
+services-repairs.html
+    Now a redirect to services-residential.html. Kept rather than
+    deleted so any existing link or bookmark still lands somewhere
+    sensible instead of a 404.
+
+services-commercial.html
+    The "Ready to book? / Book Now" panel is now "Talk to the team"
+    with a call button and an email button, as Chris asked. The
+    floating button on this page is CALL + EMAIL US, never Book
+    Online.
+
+contact.html
+    "Email us" is now three routes, each with its own label:
+        Email us — Residential
+        Email us — Commercial & New Construction
+        Email us — Careers & hiring
+    Call us and Service area are untouched above and below them.
+    "Home Generators" removed from the service picker in the form.
+
+index.html
+    "generators" removed from the services sentence in the ESOP card.
+
+services-lighting.html, services-panel-upgrades.html
+    No content change - menu, logo, palette and floating button only.
+
+
+!! ONE THING I NEED FROM CHRIS !!
+--------------------------------------------------------------------
+Two of the three contact addresses are still unknown, so Residential
+and Commercial both point at service@elite1314.com for now. Careers
+goes to jennifer@elite1314.com.
+
+Nothing is broken - every email still arrives - but the split is only
+doing half its job until those two addresses exist.
+
+When they come through it is a two-line change. In contact.html,
+search for
+
+    Email us, split by enquiry type
+
+and the three lines are directly beneath that comment.
+
+
+A NOTE ON NEW CONSTRUCTION
+--------------------------------------------------------------------
+new-construction.html still mentions generators, but in the sense of
+"automatic transfer switch pre-wiring" and "pre-wiring for standby
+generators during framing". That is electrical work Elite does for
+builders, not the Generators service page Chris dropped, so I left it
+alone. Say the word if he wants those gone too.
