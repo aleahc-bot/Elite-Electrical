@@ -226,6 +226,11 @@ body.home .brand{opacity:1;pointer-events:auto}
 /* block, so "Instant Online Booking" always starts its own line instead of
    trailing after "Upfront Pricing." and breaking mid-phrase */
 .hl-accent{color:var(--red);display:block}
+/* ...and on a desktop it never breaks either, so "Booking" always sits beside
+   "Online". max-width above is in ch units, which are measured against
+   whatever font is current - so for the instant before Archivo arrives the
+   wider fallback can push "Booking" onto a line of its own. This pins it. */
+@media(min-width:861px){.hl-accent{white-space:nowrap}}
 .hl-lead{font-size:clamp(17px,2.1vw,23px);color:var(--muted);font-weight:600;
   margin:clamp(16px,2vw,22px) 0 clamp(28px,3.4vw,38px)}
 
