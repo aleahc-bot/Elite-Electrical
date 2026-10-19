@@ -23,12 +23,17 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
 
   var BOOK  = 'https://book.housecallpro.com/book/Bay-Rise-Electric-LLC/57393ec46f57423a9667ff74d251c8f2?v2=true';
   var TEL   = '+12395611314';
-  var MAIL  = 'service@elite1314.com';
 
   var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase().replace(/\.html?$/,'');
   /* the two trade pages: no Housecall Pro booking, call or email instead */
   var TRADE = {'new-construction':1, 'services-commercial':1, 'commercial':1};
   var trade = !!TRADE[page];
+
+  /* Commercial and New Construction route to Chris; every other page uses
+     the public address, which is what the footer and contact details carry.
+     Declared after `trade` - var hoists, so reading it above would have
+     silently given every page the public address. */
+  var MAIL  = trade ? 'chris@elite1314.com' : 'service@elite1314.com';
 
   var SVG_PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>';
   var SVG_MAIL  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-11zm0 0l9 6 9-6" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
