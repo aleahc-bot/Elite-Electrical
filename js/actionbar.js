@@ -156,8 +156,8 @@ if (!window.__eliteBar) { window.__eliteBar = 1;
        correct label alone so this is a no-op once every page carries it. */
     if(href.indexOf('services-residential')>-1){
       var t=a.textContent.trim();
-      if(t!=='Residential/Repairs & Service' && /^Residential\b/.test(t)){
-        a.textContent='Residential/Repairs & Service';
+      if(t!=='Residential – Repairs & Service' && /^Residential\b/.test(t)){
+        a.textContent='Residential – Repairs & Service';
       }
     }
   });
