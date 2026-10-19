@@ -239,8 +239,8 @@ footer{background:var(--ink-blue);color:#fff;padding:64px var(--pad) 34px}
 /* ===== MULTI-PAGE ADDITIONS ===== */
 .page-banner::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,rgba(16,28,58,.95) 0%,rgba(16,28,58,.66) 52%,rgba(16,28,58,.4) 100%),linear-gradient(0deg,rgba(16,28,58,.82),transparent 72%)}
 .page-banner .wrap{position:relative;z-index:1}
-.page-banner .eyebrow{color:var(--yellow)}
-.page-banner .eyebrow .ln{background:var(--yellow)}
+.page-banner .eyebrow{color:var(--chrome)}
+.page-banner .eyebrow .ln{background:var(--chrome)}
 .page-banner h1{color:#fff;font-weight:900;font-size:clamp(40px,6.5vw,80px);letter-spacing:-.035em;line-height:.94}
 .page-banner .lead{color:rgba(255,255,255,.82);max-width:54ch;margin:20px 0 0;font-size:clamp(16px,1.7vw,19px);line-height:1.55}
 .menu a.nav-active{color:#fff}
@@ -605,6 +605,19 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
 /* One mark everywhere. The full-colour logo carries a white keyline, so it
    reads on the dark hero banners as well as on white - no second file. */
 .brand .l-navy{opacity:1}
+/* ── the header mark, for pages whose HTML has not been updated ──────────
+   Ten pages still carry the old two-image header: <img class="l-navy"
+   src="logo-navy.png"> plus <img class="l-white">. Two rules fix both
+   symptoms there without touching those files, and they are harmless on
+   the pages that have already been updated.
+
+   1. the stray white mark used to be hidden by an opacity swap that no
+      longer exists, so it painted over the colour one - that is the
+      doubled logo. Hide it outright.
+   2. point the remaining image at the new mark. `content` on an <img>
+      replaces the rendered image; the src stays as the fallback. */
+.brand .l-white{display:none !important}
+.brand .l-navy{content:url(../images/logo-color-nav.webp)}
 
 /* ── accents on dark surfaces ────────────────────────────────────────────
    The accent blue is 5.5:1 on white but only ~3:1 on the navy footer and

@@ -208,8 +208,12 @@ body.home .brand{opacity:1;pointer-events:auto}
     linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.74) 48%,
                     rgba(255,255,255,.52) 100%)}
 }
-.hl-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
-  padding:0 var(--pad);text-align:left;
+/* Full width rather than centred in the 1200px column, which pushed the
+   headline far right of the logo on a wide screen. The left gutter is 6.2vw,
+   measured off the client's guide - a shade under the site's 7vw --pad, so
+   the hero sits almost flush with the sections below it. */
+.hl-in{position:relative;z-index:2;max-width:none;margin:0;
+  padding:0 var(--pad) 0 clamp(22px,6.2vw,122px);text-align:left;
   display:flex;flex-direction:column;align-items:flex-start}
 
 /* short rule above the headline, as in the mockup */
@@ -308,6 +312,25 @@ body.home .brand{opacity:1;pointer-events:auto}
 .hl-esop-link:hover svg{transform:translateX(3px)}
 @media(max-width:900px){.hl-intro-grid{grid-template-columns:1fr}}
 
+
+
+
+/* ── accents on dark surfaces ────────────────────────────────────────────
+   Gold used to carry these; the logo blue does not - it measures about
+   3:1 on navy, which is under AA and reads as the blue-on-blue vibration.
+   On every dark surface the accent becomes the logo's chrome instead, and
+   the big heading goes plain white. */
+.how-sec .sec-title{color:#fff}
+.how-sec .eyebrow{color:var(--chrome)}
+.how-sec .eyebrow .ln{background:var(--chrome)}
+.how-sec .hnum{background:var(--chrome);color:var(--ink-blue)}
+.how-sec .how-steps::before{background:linear-gradient(90deg,rgba(255,255,255,.32),var(--chrome))}
+.how-sec .how-guide:hover{color:var(--chrome);border-color:var(--chrome)}
+.tcard2.a .kick{color:var(--chrome)}
+.tcard2.a::before{background:var(--chrome)}
+.hl-esop .esop-badge{color:var(--chrome)}
+.hl-esop-link{color:var(--chrome)}
+.hl-esop-link:hover{color:#fff}
 
 /* ── homepage reviews block (cards themselves are styled by site.css) ───── */
 .hl-revs{padding:clamp(56px,7vw,86px) 0}
