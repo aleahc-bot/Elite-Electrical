@@ -286,11 +286,20 @@ body.home .brand{opacity:1;pointer-events:auto}
 
 @media(max-width:860px){.hl-title{max-width:none}}
 @media(max-width:560px){
-  .hero.hero-light{padding-top:clamp(112px,16vh,140px)}
+  .hero.hero-light{padding-top:clamp(128px,17vh,158px)}
   .hl-cta{flex-direction:column;gap:16px}
   .hl-cta .btn{flex:1 1 auto;width:100%;font-size:16.5px;padding:18px 24px}
   .hl-points{gap:14px 18px}
   .hl-points li{font-size:14.5px}
+}
+/* One column on a phone. Two across left "Licensed & insured" - the longest
+   of the four - with barely a hair of space beside the tick, and the column
+   rule almost touching the text. A single column gives every point the full
+   width of the card and reads far cleaner at this size. */
+@media(max-width:520px){
+  .hl-points{grid-template-columns:1fr;gap:12px;padding:16px 18px}
+  .hl-points li{font-size:15px}
+  .hl-points li::before{width:20px;height:20px;background-size:12px 12px}
 }
 
 /* ── the welcome copy, moved out of the hero ────────────────────────────── */

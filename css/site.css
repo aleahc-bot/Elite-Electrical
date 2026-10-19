@@ -587,19 +587,19 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
 .nav{height:136px}
 .brand,.brand img,.brand .l-navy{height:124px}
 @media(max-width:1180px){
-  .nav{height:118px}
+  .nav{height:132px}
   .brand,.brand img,.brand .l-navy{height:106px}
-  .menu{inset:118px 0 auto 0;max-height:calc(100vh - 118px);max-height:calc(100dvh - 118px)}
+  .menu{inset:132px 0 auto 0;max-height:calc(100vh - 132px);max-height:calc(100dvh - 132px)}
 }
 @media(max-width:430px){
-  .nav{height:110px;padding-left:16px}
+  .nav{height:126px;padding-left:16px}
   .brand,.brand img,.brand .l-navy{height:98px}
-  .menu{inset:110px 0 auto 0;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}
+  .menu{inset:126px 0 auto 0;max-height:calc(100vh - 126px);max-height:calc(100dvh - 126px)}
 }
 @media(max-width:340px){
-  .nav{height:94px}
+  .nav{height:108px}
   .brand,.brand img,.brand .l-navy{height:82px}
-  .menu{inset:94px 0 auto 0;max-height:calc(100dvh - 94px)}
+  .menu{inset:108px 0 auto 0;max-height:calc(100dvh - 108px)}
 }
 
 /* One mark everywhere. The full-colour logo carries a white keyline, so it
@@ -630,3 +630,99 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
 .esop-l strong{color:var(--chrome)}
 .esop-list li::before{background:var(--chrome)}
 .fb .tag-serif{color:var(--chrome)}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STICKY ACTION BAR  (Oct 19 meeting)
+   A bar across the bottom of every page carrying the booking link, revealed
+   once you scroll past the hero. js/site.js builds it and decides whether
+   this page gets BOOK ONLINE or CALL + EMAIL (New Construction, Commercial).
+   The old floating phone pill is retired where the bar exists, so there is
+   only ever one thing hovering over the content.
+   ══════════════════════════════════════════════════════════════════════════ */
+body.has-actionbar .fab-call{display:none}
+
+.actionbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(10,24,53,.93);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom,0px));
+  transform:translateY(110%);
+  transition:transform .32s cubic-bezier(.22,.8,.3,1);
+  will-change:transform}
+.actionbar.in{transform:translateY(0)}
+
+.ab-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
+
+.actionbar a{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-weight:700;font-size:16px;letter-spacing:-.01em;text-decoration:none;
+  border-radius:100px;padding:15px 28px;border:1.5px solid transparent;white-space:nowrap;
+  transition:background .2s,border-color .2s,color .2s,transform .15s}
+.actionbar svg{width:19px;height:19px;flex:0 0 auto}
+
+.ab-main{flex:1 1 auto;background:var(--red);color:#fff;
+  box-shadow:0 10px 26px rgba(196,42,42,.34)}
+.ab-main:hover,.ab-main:focus-visible{background:var(--red-deep);color:#fff;transform:translateY(-1px)}
+
+.ab-side{flex:0 0 auto;background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.55)}
+.ab-side:hover,.ab-side:focus-visible{border-color:#fff;background:rgba(255,255,255,.12);color:#fff}
+
+/* the trade pages lead with the call, so both buttons carry equal weight */
+.actionbar.is-trade .ab-main{flex:0 1 auto}
+.actionbar.is-trade .ab-in{justify-content:center}
+
+.actionbar a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* Desktop: a centred pair rather than one button stretched across 1200px. */
+@media (min-width:721px){
+  .ab-in{justify-content:center}
+  .ab-main{flex:0 1 auto;min-width:260px}
+}
+
+/* Phone: the booking button takes the width it deserves and the call button
+   shrinks to its icon, so the two never wrap onto a second line. */
+@media (max-width:720px){
+  .actionbar{padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
+  .ab-in{gap:9px}
+  .actionbar a{font-size:15.5px;padding:14px 20px}
+  .ab-icon{padding:0;width:50px;height:50px;flex:0 0 50px}
+  .ab-icon .ab-num{display:none}
+  .actionbar.is-trade a{flex:1 1 0;padding:14px 12px;font-size:14.5px}
+  .actionbar.is-trade .ab-main span{font-size:14.5px}
+}
+@media (max-width:380px){
+  .actionbar.is-trade a span{font-size:13.5px}
+}
+
+/* keep the footer clear of the bar once it is up */
+body.has-actionbar footer{padding-bottom:104px}
+@media (max-width:720px){body.has-actionbar footer{padding-bottom:96px}}
+
+@media (prefers-reduced-motion:reduce){
+  .actionbar{transition:none}
+  .actionbar a{transition:none}
+  .ab-main:hover{transform:none}
+}
+@media print{.actionbar{display:none}}
+
+
+/* ═══ header clearance on phones  (Oct 19 feedback) ═════════════════════════
+   The mark is unchanged - only the bar around it grew. The logo's script
+   swoosh runs right to the bottom edge of the artwork, so at 6px of padding
+   it sat on the header's hairline and read as an overlap. The bars above are
+   now 14px taller than the mark at every phone breakpoint, and the first
+   section on each page gains the same amount back so nothing tucks under.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media(max-width:1180px){
+  .page-banner{padding-top:clamp(162px,20vh,200px)}
+}
+@media(max-width:430px){
+  .page-banner{padding-top:150px}
+}
+
+/* While the burger menu is open the bar would sit on top of the last menu
+   item, so it drops out of the way until the menu closes. :has() watches the
+   class whichever script toggles it, which matters because the homepage runs
+   js/index.js and every other page runs js/site.js. */
+body:has(.menu.open) .actionbar{transform:translateY(110%)}
