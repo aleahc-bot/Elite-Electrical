@@ -1,91 +1,91 @@
-UPLOAD NOW — 11 files, three drops
+19 OCTOBER — LAFE + COLE ROUND, PLUS THE GOLD STARS
+33 .html files, 8 .css files, 2 .js files. Three drops, no zip.
+
+
+WHAT IS IN HERE
+====================================================================
+Four changes, and because one of them is the nav label, it touches
+every page. That is why the folder looks big — most of these files
+have a one-line difference.
+
+  1. Our Story timeline now reads 2019–Present       (Lafe)
+  2. The nav label is now an en dash everywhere      (Lafe)
+       Residential – Repairs & Service
+  3. Contact page has a PROPERTY TYPE row            (Cole)
+       Residential  |  Commercial / New Construction
+       It sits above Desired service(s) and is required.
+  4. Review stars are gold, not blue                 (you)
+       Gold on the white cards, a brighter gold on the navy
+       "5.0 Trusted across Southwest Florida" banner so it still
+       reads clearly against the dark blue.
+
+
+THE THREE DROPS
 ====================================================================
 
-DROP 1 — repo ROOT  (9 .html)
+DROP 1 — repo ROOT  (33 .html files)
 --------------------------------------------------------------------
-  contact.html              services-panel-upgrades.html
-  mrg.html        <- new    services-repairs.html
-  services.html             services-residential.html
-  services-commercial.html  story.html
-  services-lighting.html
+  Everything in this folder that ends in .html.
+  Open the repo at its top level, Add file > Upload files, drag them
+  all in, commit. They replace the existing ones.
 
-DROP 2 — the  css  folder  (1 file)
+
+DROP 2 — the  css  folder  (8 files)
 --------------------------------------------------------------------
-  story.css   (already live - include it only if unsure)
+  apply.css   careers.css   index.css   new-construction.css
+  review.css  reviews.css   site.css    story.css
 
-DROP 3 — the  js  folder  (1 file)
+  Click INTO the existing  css  folder FIRST, so the breadcrumb at the
+  top of the page reads   <repo> / css
+  Then Add file > Upload files, drag all eight in, commit.
+
+  site.css and reviews.css are the two carrying the gold stars.
+
+
+DROP 3 — the  js  folder  (2 files)
 --------------------------------------------------------------------
-  actionbar.js   <- the live copy is still the old one
+  site.js
+  actionbar.js
+
+  Click INTO the existing  js  folder FIRST (breadcrumb reads
+  <repo> / js), then upload both and commit.
+
+  actionbar.js also fixes the nav label on any page that is still
+  running the old markup, so the en dash is right everywhere the
+  moment this file lands.
 
 
-=====================================================================
-THIS ROUND
-=====================================================================
+A NOTE ON THE FILE NAMES
+====================================================================
+If Windows has added  -1  to the end of anything (site-1.css,
+actionbar-1.js), that file will NOT work — GitHub treats it as a
+brand new file sitting beside the old one and nothing changes on the
+site. That is what was happening for the last few weeks.
 
-OUR STORY — no booking anywhere on it
---------------------------------------------------------------------
-The page's own call to action was already call-and-email. The two that
-were left are now too: the header button reads CONTACT US and goes to
-the contact page, and the floating button at the bottom is CALL +
-EMAIL US rather than Book Online.
-
-It keeps the public address, service@elite1314.com - only Commercial
-and New Construction route to Chris.
+These files are written straight into this folder rather than
+downloaded, so they should be clean. Worth a glance before you upload.
 
 
-CONTACT — relisted, and residential rerouted
---------------------------------------------------------------------
-  Call us ............................... 239.561.1314
-  Residential — Email us ................ homeservices@elite1314.com
-  Commercial & New Construction — Email us  chris@elite1314.com
-  Careers & hiring — Email us ........... jennifer@elite1314.com
-  Service area .......................... Cape Coral · Fort Myers
+CHECK IT WORKED
+====================================================================
+After Vercel finishes its deploy:
 
-Service first, then "Email us", as asked. Call us stays at the top and
-Service area at the bottom.
-
-The icons in the blue squares are white.
+  1. Reviews page — the five stars under 5.0 are gold, not blue.
+  2. Contact page — PROPERTY TYPE appears above DESIRED SERVICE(S),
+     and the form will not submit until one is picked.
+  3. Our Story — the last milestone reads 2019–Present.
+  4. Any page's Services menu — "Residential – Repairs & Service"
+     with the long dash.
 
 
-MATERIAL GUIDE — thumbnails open full size
---------------------------------------------------------------------
-Hover a product and it lifts slightly, with a magnifier appearing in
-the corner. Click it, or press Enter when it is focused, and the whole
-photograph opens over the page.
+STILL OUTSTANDING
+====================================================================
+  Delete  services-generators.html  from the repo root.
+  The menu no longer links to it, but the page is still there and I
+  cannot delete it from here.
+  GitHub: open the file > three dots, top right > Delete file.
 
-The grid shot is cropped to 4:3 so the cards line up; the enlarged one
-is not cropped at all, so nothing is cut off whatever shape the
-photograph is. The product name sits underneath it. Close with the X,
-by clicking the background, or with Escape.
-
-All 39 products on the page.
-
-Built as one overlay reused for every product rather than one per
-card. Each photograph is already embedded in this page, and cloning
-forty of them would have doubled it in memory for no reason.
-
-mrg.html also got the whole treatment the other legacy pages had, as
-this is the first time it has been touched: new logo as a file, the
-current palette, the corrected services menu, BOOK ONLINE in the
-header, the floating button and the updated footer. 2191KB -> 2081KB.
-
-
-FOOTER LOGO
---------------------------------------------------------------------
-On all seven of these pages the footer logo was an old image baked
-into the page as base64. It is now the same file the rest of the site
-uses, images/elite-electrical-contractors.png - so it updates with
-everything else from now on, and each page is about 16KB lighter.
-
-
-CHECKED BEFORE SENDING
---------------------------------------------------------------------
-All 15 pages loaded, no script errors, header and footer logos
-resolving on every one, no "Book Now" anywhere, and the floating
-button correct per page: CALL + EMAIL on Commercial, New Construction
-and Our Story, BOOK ONLINE everywhere else.
-
-New Construction still mentions generators, but in the sense of
-transfer-switch pre-wiring and standby generator rough-in during
-framing. That is builder work, not the service page Chris dropped, so
-it is deliberate.
+  Waiting on Chris: technician photos, the team photo, the
+  Materials/Parts portfolio link, 36 of the 41 community photos, and
+  the Whispering Lakes duplicate (it is listed under both Pulte and
+  M/I Homes).
