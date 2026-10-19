@@ -1,111 +1,91 @@
-UPLOAD NOW — 9 files, three drops
+UPLOAD NOW — 11 files, three drops
 ====================================================================
-This replaces the LOGO-FIX folder. Everything that was in it is in
-here, plus today's later fixes. Delete LOGO-FIX if you still have it.
 
-
-DROP 1 — repo ROOT  (7 .html)
+DROP 1 — repo ROOT  (9 .html)
 --------------------------------------------------------------------
-  contact.html                  services-panel-upgrades.html
-  services.html                 services-residential.html
-  services-commercial.html      story.html
+  contact.html              services-panel-upgrades.html
+  mrg.html        <- new    services-repairs.html
+  services.html             services-residential.html
+  services-commercial.html  story.html
   services-lighting.html
 
 DROP 2 — the  css  folder  (1 file)
 --------------------------------------------------------------------
-  story.css
-  Click INTO the css folder first - breadcrumb reads <repo> / css.
+  story.css   (already live - include it only if unsure)
 
 DROP 3 — the  js  folder  (1 file)
 --------------------------------------------------------------------
-  actionbar.js
-  Click INTO the js folder first - breadcrumb reads <repo> / js.
+  actionbar.js   <- the live copy is still the old one
 
 
 =====================================================================
-WHAT CHANGED
+THIS ROUND
 =====================================================================
 
-1. THE LOGO ON THE SERVICES AND CONTACT PAGES
+OUR STORY — no booking anywhere on it
 --------------------------------------------------------------------
-It was invisible until you scrolled, and half the size it is on the
-homepage. Both had the same cause: those pages carry their own copy of
-the old header and never load the shared stylesheet.
+The page's own call to action was already call-and-email. The two that
+were left are now too: the header button reads CONTACT US and goes to
+the contact page, and the floating button at the bottom is CALL +
+EMAIL US rather than Book Online.
 
-  * The old design had TWO logos - colour, hidden over the dark
-    banner, and a white one shown instead. The rule that hides the
-    colour one was still there with nothing left to swap to, so the
-    only logo on the page was hidden until you scrolled.
-  * The bar is now 136px with a 124px mark, stepping down to 126/98
-    on a phone, exactly as on every other page. The mobile menu
-    offsets and the banner padding moved with it.
+It keeps the public address, service@elite1314.com - only Commercial
+and New Construction route to Chris.
 
 
-2. BLUE ON BLUE, EVERYWHERE IT HAPPENS
+CONTACT — relisted, and residential rerouted
 --------------------------------------------------------------------
-I had only fixed the Electrical card the first time. This pass went
-through every accent on these pages that lands on a dark ground.
+  Call us ............................... 239.561.1314
+  Residential — Email us ................ homeservices@elite1314.com
+  Commercial & New Construction — Email us  chris@elite1314.com
+  Careers & hiring — Email us ........... jennifer@elite1314.com
+  Service area .......................... Cape Coral · Fort Myers
 
-  THE DARK ELECTRICAL CARD
-    the POWER line, the four tick chips, the bolt tile - all accent
-    blue on a blue panel, about 3:1. Chrome silver now, 11.5:1 on the
-    same navy, and the tick chips read as actually ticked.
+Service first, then "Email us", as asked. Call us stays at the top and
+Service area at the bottom.
 
-  THE PAGE BANNER EYEBROW   <- the one you spotted
-    "WHAT WE DO" and "CONTACT" were bright blue on the dark banner.
-    On New Construction and Our Story that same eyebrow is silver,
-    because those pages load the shared stylesheet. These pages do
-    not, so they never got it. They match now.
-
-  THE SERVICE CARD ICONS
-    the 01-05 cards sit on white, but their icon tile is a navy
-    gradient - so a blue glyph on it is the same problem one layer
-    down. White glyph now.
-
-  AND THE REST
-    the careers band eyebrow, the ESOP panel's bold text and badge,
-    the footer column headings and the footer's serif tag line. All
-    the same set css/site.css applies to the other 25 pages.
-
-  Contact details icons: blue glyph on a blue tile. White now.
+The icons in the blue squares are white.
 
 
-3. "THANK YOU FOR SUBMITTING" NO LONGER SITS UNDER THE FORM
+MATERIAL GUIDE — thumbnails open full size
 --------------------------------------------------------------------
-That panel was always meant to appear only after a request is sent,
-and the markup had it marked hidden. But the page's own stylesheet set
-display:flex on it, which outranks the browser's rule for the hidden
-attribute - so it showed from the moment the page loaded. Pinned shut
-now. It still appears when the form is actually submitted.
+Hover a product and it lifts slightly, with a magnifier appearing in
+the corner. Click it, or press Enter when it is focused, and the whole
+photograph opens over the page.
+
+The grid shot is cropped to 4:3 so the cards line up; the enlarged one
+is not cropped at all, so nothing is cut off whatever shape the
+photograph is. The product name sits underneath it. Close with the X,
+by clicking the background, or with Escape.
+
+All 39 products on the page.
+
+Built as one overlay reused for every product rather than one per
+card. Each photograph is already embedded in this page, and cloning
+forty of them would have doubled it in memory for no reason.
+
+mrg.html also got the whole treatment the other legacy pages had, as
+this is the first time it has been touched: new logo as a file, the
+current palette, the corrected services menu, BOOK ONLINE in the
+header, the floating button and the updated footer. 2191KB -> 2081KB.
 
 
-4. THE THREE EMAIL ROUTES ARE ALL LIVE
+FOOTER LOGO
 --------------------------------------------------------------------
-  Residential ....... service@elite1314.com
-  Commercial / NC ... chris@elite1314.com
-  Careers ........... jennifer@elite1314.com
-
-Chris's address is now wired in three places, not just the contact
-page, so a commercial enquiry reaches him wherever it starts:
-
-  * the Commercial & New Construction row on the contact page
-  * the EMAIL US button on the Commercial page itself
-  * the floating EMAIL US button at the bottom of the Commercial and
-    New Construction pages
-
-Every other page still uses service@elite1314.com, which is what the
-footer and the contact details carry throughout.
+On all seven of these pages the footer logo was an old image baked
+into the page as base64. It is now the same file the rest of the site
+uses, images/elite-electrical-contractors.png - so it updates with
+everything else from now on, and each page is about 16KB lighter.
 
 
-5. SCROLL ANIMATION
+CHECKED BEFORE SENDING
 --------------------------------------------------------------------
-"How a job goes" - the four steps used to fade up all at once, which
-on a wide screen means you never see it happen. They now arrive one
-after another over about 1.4 seconds, each rising 40px, with the
-numbered disc scaling in a beat behind its own step.
+All 15 pages loaded, no script errors, header and footer logos
+resolving on every one, no "Book Now" anywhere, and the floating
+button correct per page: CALL + EMAIL on Commercial, New Construction
+and Our Story, BOOK ONLINE everywhere else.
 
-The Our Story timeline - the rail draws itself down the gutter first,
-then each dot pops onto it, then the milestones cascade in behind.
-About a second and a half end to end.
-
-Both stop completely for anyone whose device asks for reduced motion.
+New Construction still mentions generators, but in the sense of
+transfer-switch pre-wiring and standby generator rough-in during
+framing. That is builder work, not the service page Chris dropped, so
+it is deliberate.
