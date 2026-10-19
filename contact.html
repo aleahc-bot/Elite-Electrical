@@ -540,6 +540,27 @@ header.scrolled .brand .l-navy{opacity:1}
 .trade.elec .svc-item .tick{background:var(--chrome);color:var(--ink-blue)}
 .trade.elec .svc-item{color:#fff}
 .detail .di{background:var(--blue);color:#fff}
+/* ── EVERY ACCENT THAT LANDS ON A DARK SURFACE  (Oct 19, second pass) ────
+   The gold-to-blue swap left the accent sitting on navy in a dozen places.
+   Blue on navy is about 3:1; the logo's chrome silver is 11.5:1 on the same
+   ground. This is the same set css/site.css applies to the other 25 pages,
+   which is why those pages read correctly and these did not. */
+.page-banner .eyebrow{color:var(--chrome)}
+.page-banner .eyebrow .ln{background:var(--chrome)}
+.careers .eyebrow{color:var(--chrome)}
+.careers .eyebrow .ln{background:var(--chrome)}
+.story .eyebrow{color:var(--chrome)}
+.esop b,.esop-badge,.esop-l strong{color:var(--chrome)}
+.esop-list li::before{background:var(--chrome)}
+.fb .tag-serif{color:var(--chrome)}
+.fc h4{color:var(--chrome)}
+.fbar .mono.g{color:var(--chrome)}
+.svc-back:hover{color:var(--chrome)}
+
+/* The service cards sit on white, but their icon tile is a navy gradient -
+   so a blue glyph on it is the same problem one layer down. White glyph. */
+.svc-c .ic{color:#fff}
+
 
 /* ── THE THANK-YOU PANEL STAYS HIDDEN UNTIL IT IS EARNED ────────────────
    .form-sent sets display:flex, which outranks the browser's own rule for
@@ -552,14 +573,19 @@ header.scrolled .brand .l-navy{opacity:1}
    The steps and cards already fade up as they come into view; they just all
    did it at the same instant. Staggering them turns one movement into a
    sequence, which reads as deliberate rather than as a page settling. */
-.steps .step{transform:translateY(34px)}
-.steps .step:nth-child(1){transition-delay:.05s}
-.steps .step:nth-child(2){transition-delay:.18s}
-.steps .step:nth-child(3){transition-delay:.31s}
-.steps .step:nth-child(4){transition-delay:.44s}
-.steps .step .num{transform:translateY(8px) scale(.88);opacity:0;
-  transition:transform .55s cubic-bezier(.34,1.4,.64,1) .12s,opacity .45s ease .12s}
+.steps .step{transform:translateY(40px);transition:opacity .75s ease,transform .75s cubic-bezier(.22,.78,.3,1)}
+.steps .step:nth-child(1){transition-delay:.08s}
+.steps .step:nth-child(2){transition-delay:.26s}
+.steps .step:nth-child(3){transition-delay:.44s}
+.steps .step:nth-child(4){transition-delay:.62s}
+/* the numbered disc lands a beat after its step, with a little overshoot */
+.steps .step .num{transform:scale(.5) translateY(6px);opacity:0;
+  transition:transform .6s cubic-bezier(.34,1.56,.64,1),opacity .4s ease}
 .steps .step.in .num{transform:none;opacity:1}
+.steps .step:nth-child(1).in .num{transition-delay:.22s}
+.steps .step:nth-child(2).in .num{transition-delay:.40s}
+.steps .step:nth-child(3).in .num{transition-delay:.58s}
+.steps .step:nth-child(4).in .num{transition-delay:.76s}
 .svc-grid .svc-item{transition:transform .2s,opacity .5s ease,translate .5s ease}
 @media (prefers-reduced-motion:reduce){
   .steps .step,.steps .step .num{transition:none;transform:none;opacity:1}

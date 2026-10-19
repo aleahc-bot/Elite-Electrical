@@ -41,16 +41,33 @@ the old header and never load the shared stylesheet.
     offsets and the banner padding moved with it.
 
 
-2. BLUE ON BLUE, GONE
+2. BLUE ON BLUE, EVERYWHERE IT HAPPENS
 --------------------------------------------------------------------
-On the dark Electrical card: the POWER line, the four tick chips and
-the lightning-bolt tile were all the accent blue on a blue panel -
-about 3:1, which is why they hurt to look at. They now use the logo's
-chrome silver, 11.5:1 on the same navy. The tick chips are silver with
-a dark check, so they actually read as ticked.
+I had only fixed the Electrical card the first time. This pass went
+through every accent on these pages that lands on a dark ground.
 
-Same fix for the icons beside the contact details - they were a blue
-glyph on a blue tile. White glyph now.
+  THE DARK ELECTRICAL CARD
+    the POWER line, the four tick chips, the bolt tile - all accent
+    blue on a blue panel, about 3:1. Chrome silver now, 11.5:1 on the
+    same navy, and the tick chips read as actually ticked.
+
+  THE PAGE BANNER EYEBROW   <- the one you spotted
+    "WHAT WE DO" and "CONTACT" were bright blue on the dark banner.
+    On New Construction and Our Story that same eyebrow is silver,
+    because those pages load the shared stylesheet. These pages do
+    not, so they never got it. They match now.
+
+  THE SERVICE CARD ICONS
+    the 01-05 cards sit on white, but their icon tile is a navy
+    gradient - so a blue glyph on it is the same problem one layer
+    down. White glyph now.
+
+  AND THE REST
+    the careers band eyebrow, the ESOP panel's bold text and badge,
+    the footer column headings and the footer's serif tag line. All
+    the same set css/site.css applies to the other 25 pages.
+
+  Contact details icons: blue glyph on a blue tile. White now.
 
 
 3. "THANK YOU FOR SUBMITTING" NO LONGER SITS UNDER THE FORM
@@ -82,9 +99,10 @@ footer and the contact details carry throughout.
 
 5. SCROLL ANIMATION
 --------------------------------------------------------------------
-"How a job goes" - the four steps used to fade up all at once. They
-now arrive one after another, with the step number popping in just
-behind each one.
+"How a job goes" - the four steps used to fade up all at once, which
+on a wide screen means you never see it happen. They now arrive one
+after another over about 1.4 seconds, each rising 40px, with the
+numbered disc scaling in a beat behind its own step.
 
 The Our Story timeline - the rail draws itself down the gutter first,
 then each dot pops onto it, then the milestones cascade in behind.
