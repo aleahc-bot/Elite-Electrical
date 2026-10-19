@@ -632,97 +632,83 @@ header.scrolled .menu a.nav-active{color:var(--blue)}
 .fb .tag-serif{color:var(--chrome)}
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   STICKY ACTION BAR  (Oct 19 meeting)
-   A bar across the bottom of every page carrying the booking link, revealed
-   once you scroll past the hero. js/site.js builds it and decides whether
-   this page gets BOOK ONLINE or CALL + EMAIL (New Construction, Commercial).
-   The old floating phone pill is retired where the bar exists, so there is
-   only ever one thing hovering over the content.
+   FLOATING BOOK ONLINE BUTTON  (Oct 19 feedback)
+   No bar, no panel - the buttons float free over whatever is behind them, so
+   the page is never cut off by a slab of navy. The gap between them stays
+   clickable because the container itself ignores pointer events.
+   The red pill carries a slow red aura that drifts and breathes. It is kept
+   deliberately quiet - six seconds a lap, and it stops entirely for anyone
+   who has asked their system for reduced motion.
    ══════════════════════════════════════════════════════════════════════════ */
 body.has-actionbar .fab-call{display:none}
 
 .actionbar{
   position:fixed;left:0;right:0;bottom:0;z-index:70;
-  background:rgba(10,24,53,.93);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-top:1px solid rgba(255,255,255,.12);
-  padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom,0px));
-  transform:translateY(110%);
-  transition:transform .32s cubic-bezier(.22,.8,.3,1);
+  background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;
+  padding:0 var(--pad) calc(18px + env(safe-area-inset-bottom,0px));
+  pointer-events:none;
+  transform:translateY(145%);
+  transition:transform .34s cubic-bezier(.22,.8,.3,1);
   will-change:transform}
 .actionbar.in{transform:translateY(0)}
 
-.ab-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
+.ab-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px;
+  isolation:isolate}
 
-.actionbar a{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+.actionbar a{pointer-events:auto;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   font-weight:700;font-size:16px;letter-spacing:-.01em;text-decoration:none;
-  border-radius:100px;padding:15px 28px;border:1.5px solid transparent;white-space:nowrap;
+  border-radius:100px;padding:16px 30px;border:1.5px solid transparent;white-space:nowrap;
   transition:background .2s,border-color .2s,color .2s,transform .15s}
 .actionbar svg{width:19px;height:19px;flex:0 0 auto}
 
+/* ── the red pill and its aura ──────────────────────────────────────────── */
 .ab-main{flex:1 1 auto;background:var(--red);color:#fff;
-  box-shadow:0 10px 26px rgba(196,42,42,.34)}
+  box-shadow:0 8px 22px rgba(16,28,58,.30)}
+.ab-main::before{
+  content:"";position:absolute;inset:-4px;border-radius:inherit;z-index:-1;
+  background:linear-gradient(90deg,#E8453C,#C42A2A,#FF6E60,#C42A2A,#E8453C);
+  background-size:300% 100%;
+  filter:blur(10px);
+  animation:abDrift 6s linear infinite, abBreathe 3.8s ease-in-out infinite}
+@keyframes abDrift{from{background-position:0 0}to{background-position:300% 0}}
+@keyframes abBreathe{0%,100%{opacity:.40}50%{opacity:.72}}
 .ab-main:hover,.ab-main:focus-visible{background:var(--red-deep);color:#fff;transform:translateY(-1px)}
 
-.ab-side{flex:0 0 auto;background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.55)}
-.ab-side:hover,.ab-side:focus-visible{border-color:#fff;background:rgba(255,255,255,.12);color:#fff}
+/* ── the second button: solid, so it reads on a white page too ──────────── */
+.ab-side{flex:0 0 auto;background:var(--ink-blue);color:#fff;
+  border-color:rgba(255,255,255,.20);box-shadow:0 8px 22px rgba(16,28,58,.28)}
+.ab-side:hover,.ab-side:focus-visible{background:#16254A;border-color:rgba(255,255,255,.38);color:#fff}
 
-/* the trade pages lead with the call, so both buttons carry equal weight */
 .actionbar.is-trade .ab-main{flex:0 1 auto}
 .actionbar.is-trade .ab-in{justify-content:center}
+.actionbar a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
-.actionbar a:focus-visible{outline:2px solid #fff;outline-offset:2px}
-
-/* Desktop: a centred pair rather than one button stretched across 1200px. */
 @media (min-width:721px){
   .ab-in{justify-content:center}
-  .ab-main{flex:0 1 auto;min-width:260px}
+  .ab-main{flex:0 1 auto;min-width:258px}
 }
-
-/* Phone: the booking button takes the width it deserves and the call button
-   shrinks to its icon, so the two never wrap onto a second line. */
 @media (max-width:720px){
-  .actionbar{padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
-  .ab-in{gap:9px}
-  .actionbar a{font-size:15.5px;padding:14px 20px}
-  .ab-icon{padding:0;width:50px;height:50px;flex:0 0 50px}
+  .actionbar{padding:0 14px calc(14px + env(safe-area-inset-bottom,0px))}
+  .ab-in{gap:10px}
+  .actionbar a{font-size:15.5px;padding:15px 22px}
+  .ab-icon{padding:0;width:52px;height:52px;flex:0 0 52px}
   .ab-icon .ab-num{display:none}
-  .actionbar.is-trade a{flex:1 1 0;padding:14px 12px;font-size:14.5px}
-  .actionbar.is-trade .ab-main span{font-size:14.5px}
+  .actionbar.is-trade a{flex:1 1 0;padding:15px 12px;font-size:14.5px}
 }
-@media (max-width:380px){
-  .actionbar.is-trade a span{font-size:13.5px}
-}
+@media (max-width:380px){.actionbar.is-trade a span{font-size:13.5px}}
 
-/* keep the footer clear of the bar once it is up */
+/* nothing is covered now, but leave the footer a little air */
 body.has-actionbar footer{padding-bottom:104px}
-@media (max-width:720px){body.has-actionbar footer{padding-bottom:96px}}
+@media (max-width:720px){body.has-actionbar footer{padding-bottom:92px}}
+
+/* the open burger menu takes the screen, so the button steps aside */
+body:has(.menu.open) .actionbar{transform:translateY(145%)}
 
 @media (prefers-reduced-motion:reduce){
-  .actionbar{transition:none}
-  .actionbar a{transition:none}
+  .actionbar,.actionbar a{transition:none}
+  .ab-main::before{animation:none;opacity:.5}
   .ab-main:hover{transform:none}
 }
 @media print{.actionbar{display:none}}
-
-
-/* ═══ header clearance on phones  (Oct 19 feedback) ═════════════════════════
-   The mark is unchanged - only the bar around it grew. The logo's script
-   swoosh runs right to the bottom edge of the artwork, so at 6px of padding
-   it sat on the header's hairline and read as an overlap. The bars above are
-   now 14px taller than the mark at every phone breakpoint, and the first
-   section on each page gains the same amount back so nothing tucks under.
-   ═══════════════════════════════════════════════════════════════════════ */
-@media(max-width:1180px){
-  .page-banner{padding-top:clamp(162px,20vh,200px)}
-}
-@media(max-width:430px){
-  .page-banner{padding-top:150px}
-}
-
-/* While the burger menu is open the bar would sit on top of the last menu
-   item, so it drops out of the way until the menu closes. :has() watches the
-   class whichever script toggles it, which matters because the homepage runs
-   js/index.js and every other page runs js/site.js. */
-body:has(.menu.open) .actionbar{transform:translateY(110%)}
