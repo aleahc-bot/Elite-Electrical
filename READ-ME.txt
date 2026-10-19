@@ -1,62 +1,93 @@
-LOGO FIX — 6 files, repo root
+UPLOAD NOW — 9 files, three drops
 ====================================================================
+This replaces the LOGO-FIX folder. Everything that was in it is in
+here, plus today's later fixes. Delete LOGO-FIX if you still have it.
 
-WHAT WAS WRONG
+
+DROP 1 — repo ROOT  (7 .html)
 --------------------------------------------------------------------
-On the services pages and the contact page the logo was invisible at
-the top of the page and only appeared once you scrolled down.
-
-My fault, and here is the reason. Those pages were originally built
-with TWO logo images: the colour one, hidden while the header sits
-over the dark banner, and a white one shown in its place - swapped
-over as you scroll. The page's own stylesheet still carried the rule
-that does the hiding:
-
-    header:not(.scrolled) .brand .l-navy{opacity:0}
-
-When I replaced the two images with the single new mark, that rule
-was left behind with nothing to swap to. So the only logo on the page
-was being hidden until you scrolled.
-
-Fixed by overriding it so the one mark stays visible in both states.
-
-
-AND THE LOGO IS NOW FULL SIZE ON THESE PAGES TOO
---------------------------------------------------------------------
-Same root cause. These pages carry their own copy of the old header -
-an 84px bar with a 52px logo. The rest of the site moved to a 136px
-bar with a 124px mark some time ago, but that change lived in the
-shared stylesheet, which these pages never load. So the logo here was
-less than half the size it is on the homepage.
-
-They now step through exactly the same sizes as every other page:
-
-    desktop        bar 136px   logo 124px
-    <= 1180px      bar 132px   logo 106px
-    <= 430px       bar 126px   logo  98px
-    <= 340px       bar 108px   logo  82px
-
-The mobile menu offsets moved with it - pinned to the old 84px the
-menu would have opened underneath the header - and the banner gained
-the breathing room a taller bar needs, so no heading tucks under it.
-
-
-THE FIX — ONE DROP
---------------------------------------------------------------------
-  contact.html
-  services.html
-  services-residential.html
-  services-commercial.html
+  contact.html                  services-panel-upgrades.html
+  services.html                 services-residential.html
+  services-commercial.html      story.html
   services-lighting.html
-  services-panel-upgrades.html
 
-  Top level of the repo. Add file > Upload files, drag all 6, commit.
+DROP 2 — the  css  folder  (1 file)
+--------------------------------------------------------------------
+  story.css
+  Click INTO the css folder first - breadcrumb reads <repo> / css.
 
-services-repairs.html is not affected - it is the redirect stub and
-has no header.
+DROP 3 — the  js  folder  (1 file)
+--------------------------------------------------------------------
+  actionbar.js
+  Click INTO the js folder first - breadcrumb reads <repo> / js.
 
-The other 25 pages are not affected either. They load the shared
-stylesheet, which never had that rule.
 
-These same 6 files have also been updated inside UPLOAD-FINAL, so if
-you would rather re-upload that whole folder it is already correct.
+=====================================================================
+WHAT CHANGED
+=====================================================================
+
+1. THE LOGO ON THE SERVICES AND CONTACT PAGES
+--------------------------------------------------------------------
+It was invisible until you scrolled, and half the size it is on the
+homepage. Both had the same cause: those pages carry their own copy of
+the old header and never load the shared stylesheet.
+
+  * The old design had TWO logos - colour, hidden over the dark
+    banner, and a white one shown instead. The rule that hides the
+    colour one was still there with nothing left to swap to, so the
+    only logo on the page was hidden until you scrolled.
+  * The bar is now 136px with a 124px mark, stepping down to 126/98
+    on a phone, exactly as on every other page. The mobile menu
+    offsets and the banner padding moved with it.
+
+
+2. BLUE ON BLUE, GONE
+--------------------------------------------------------------------
+On the dark Electrical card: the POWER line, the four tick chips and
+the lightning-bolt tile were all the accent blue on a blue panel -
+about 3:1, which is why they hurt to look at. They now use the logo's
+chrome silver, 11.5:1 on the same navy. The tick chips are silver with
+a dark check, so they actually read as ticked.
+
+Same fix for the icons beside the contact details - they were a blue
+glyph on a blue tile. White glyph now.
+
+
+3. "THANK YOU FOR SUBMITTING" NO LONGER SITS UNDER THE FORM
+--------------------------------------------------------------------
+That panel was always meant to appear only after a request is sent,
+and the markup had it marked hidden. But the page's own stylesheet set
+display:flex on it, which outranks the browser's rule for the hidden
+attribute - so it showed from the moment the page loaded. Pinned shut
+now. It still appears when the form is actually submitted.
+
+
+4. THE THREE EMAIL ROUTES ARE ALL LIVE
+--------------------------------------------------------------------
+  Residential ....... service@elite1314.com
+  Commercial / NC ... chris@elite1314.com
+  Careers ........... jennifer@elite1314.com
+
+Chris's address is now wired in three places, not just the contact
+page, so a commercial enquiry reaches him wherever it starts:
+
+  * the Commercial & New Construction row on the contact page
+  * the EMAIL US button on the Commercial page itself
+  * the floating EMAIL US button at the bottom of the Commercial and
+    New Construction pages
+
+Every other page still uses service@elite1314.com, which is what the
+footer and the contact details carry throughout.
+
+
+5. SCROLL ANIMATION
+--------------------------------------------------------------------
+"How a job goes" - the four steps used to fade up all at once. They
+now arrive one after another, with the step number popping in just
+behind each one.
+
+The Our Story timeline - the rail draws itself down the gutter first,
+then each dot pops onto it, then the milestones cascade in behind.
+About a second and a half end to end.
+
+Both stop completely for anyone whose device asks for reduced motion.

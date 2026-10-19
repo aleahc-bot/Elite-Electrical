@@ -534,6 +534,42 @@ header.scrolled .brand .l-navy{opacity:1}
   .menu{inset:108px 0 auto 0;max-height:calc(100dvh - 108px)}
 }
 
+/* ── CONTRAST ON THE DARK SURFACES  (Oct 19) ─────────────────────────────
+   These pages carry their own palette, so the gold-to-blue swap left a few
+   accents sitting blue-on-blue: the POWER kick line, the tick chips and the
+   icon tile on the dark Electrical card, and the icons beside the contact
+   details. On navy the accent blue is about 3:1, which is why they vanish.
+   They take the logo's chrome silver instead - 11.5:1 on the same navy. */
+.trade.elec .kick{color:var(--chrome)}
+.trade.elec .ico{background:var(--chrome);color:var(--ink-blue)}
+.trade.elec .svc-item .tick{background:var(--chrome);color:var(--ink-blue)}
+.trade.elec .svc-item{color:#fff}
+.detail .di{background:var(--blue);color:#fff}
+
+/* ── THE THANK-YOU PANEL STAYS HIDDEN UNTIL IT IS EARNED ────────────────
+   .form-sent sets display:flex, which outranks the browser's own rule for
+   the hidden attribute, so the confirmation was sitting under the form from
+   the moment the page loaded. */
+.form-sent[hidden]{display:none !important}
+[hidden]{display:none}
+
+/* ── SCROLL ANIMATION ───────────────────────────────────────────────────
+   The steps and cards already fade up as they come into view; they just all
+   did it at the same instant. Staggering them turns one movement into a
+   sequence, which reads as deliberate rather than as a page settling. */
+.steps .step{transform:translateY(34px)}
+.steps .step:nth-child(1){transition-delay:.05s}
+.steps .step:nth-child(2){transition-delay:.18s}
+.steps .step:nth-child(3){transition-delay:.31s}
+.steps .step:nth-child(4){transition-delay:.44s}
+.steps .step .num{transform:translateY(8px) scale(.88);opacity:0;
+  transition:transform .55s cubic-bezier(.34,1.4,.64,1) .12s,opacity .45s ease .12s}
+.steps .step.in .num{transform:none;opacity:1}
+.svc-grid .svc-item{transition:transform .2s,opacity .5s ease,translate .5s ease}
+@media (prefers-reduced-motion:reduce){
+  .steps .step,.steps .step .num{transition:none;transform:none;opacity:1}
+}
+
 
 
 </style>
