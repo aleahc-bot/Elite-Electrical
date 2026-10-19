@@ -575,6 +575,13 @@ header.scrolled .brand .l-navy{opacity:1}
 /* The service cards sit on white, but their icon tile is a navy gradient -
    so a blue glyph on it is the same problem one layer down. White glyph. */
 .svc-c .ic{color:#fff}
+/* ── THE FOOTER MARK, AT THE SITE'S SIZE ────────────────────────────────
+   These pages had it at 46px while every other page shows it at 76px, so
+   the footer logo looked like a different, smaller mark. Same steps as
+   css/site.css now. */
+.fb img{height:76px;margin-bottom:16px}
+@media(max-width:820px){.fb img{height:64px}}
+
 
 
 /* ── THE THANK-YOU PANEL STAYS HIDDEN UNTIL IT IS EARNED ────────────────
