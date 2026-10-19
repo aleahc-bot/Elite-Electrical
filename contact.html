@@ -494,6 +494,42 @@ body:has(.menu.open) .actionbar{transform:translateY(145%)}
 .svc-sub-cta .btn{margin-bottom:10px}
 /* the header mark, now a file rather than two inline base64 images */
 .brand .l-white{display:none !important}
+/* ONE MARK, BOTH HEADER STATES.
+   These pages were built for two logo images: the colour one hidden at the
+   top of the page and the white one shown over the dark banner, swapped on
+   scroll. There is only one mark now, so the old rule
+       header:not(.scrolled) .brand .l-navy{opacity:0}
+   was hiding the only logo there is until you scrolled. Same specificity,
+   later in the document, so it wins. */
+header:not(.scrolled) .brand .l-navy,
+header.scrolled .brand .l-navy{opacity:1}
+/* THE MARK AT THE SAME SIZE AS THE REST OF THE SITE.
+   These pages carry their own copy of the old 84px bar with a 52px logo.
+   The rest of the site moved to a 136px bar with a 124px mark, so the logo
+   looked half-size here. Same steps as css/site.css, including the mobile
+   menu offsets - pinned to the old 84px, the menu would open underneath the
+   header - and the extra breathing room the banner needs under a taller bar. */
+.nav{height:136px}
+.brand,.brand img,.brand .l-navy{height:124px}
+@media(max-width:1180px){
+  .nav{height:132px}
+  .brand,.brand img,.brand .l-navy{height:106px}
+  .menu{inset:132px 0 auto 0;max-height:calc(100vh - 132px);max-height:calc(100dvh - 132px)}
+  .page-banner{padding-top:clamp(162px,20vh,200px)}
+}
+@media(max-width:430px){
+  .nav{height:126px;padding-left:16px}
+  .brand,.brand img,.brand .l-navy{height:98px}
+  .menu{inset:126px 0 auto 0;max-height:calc(100vh - 126px);max-height:calc(100dvh - 126px)}
+  .page-banner{padding-top:150px}
+}
+@media(max-width:340px){
+  .nav{height:108px}
+  .brand,.brand img,.brand .l-navy{height:82px}
+  .menu{inset:108px 0 auto 0;max-height:calc(100dvh - 108px)}
+}
+
+
 
 </style>
 </head>

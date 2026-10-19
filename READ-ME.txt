@@ -1,102 +1,62 @@
-UPLOAD-FINAL — everything outstanding, in one folder
-====================================================================
-53 files. This REPLACES every upload folder I have given you today:
-UPLOAD-TO-GITHUB, UPLOAD-2 and ELITE-JS-FILES. Ignore those, use this.
-
-Anything already in the repo is simply overwritten with the same or a
-newer version, so there is nothing to undo first.
-
-
-THE QUICKEST FIX, IF YOU ONLY DO ONE THING
---------------------------------------------------------------------
-  js/actionbar.js
-
-Upload that single file into the js folder and the Services menu reads
-"Residential/Repairs & Service" on EVERY page of the site straight
-away, with Generators gone, whether or not the page itself has been
-updated. It rewrites the menu as the page loads.
-
-Everything below is still worth doing - it fixes the pages properly
-rather than patching them in the browser - but that one file gets the
-menu right today.
-
-
-THE FULL UPLOAD — FOUR DROPS
+LOGO FIX — 6 files, repo root
 ====================================================================
 
-DROP 1 — repo ROOT  (32 .html files)
+WHAT WAS WRONG
 --------------------------------------------------------------------
-  Select all 32 .html files in this folder and drag them to the top
-  level of the repo. Add file > Upload files > commit.
+On the services pages and the contact page the logo was invisible at
+the top of the page and only appeared once you scrolled down.
 
-DROP 2 — the  css  folder  (4 files)
+My fault, and here is the reason. Those pages were originally built
+with TWO logo images: the colour one, hidden while the header sits
+over the dark banner, and a white one shown in its place - swapped
+over as you scroll. The page's own stylesheet still carried the rule
+that does the hiding:
+
+    header:not(.scrolled) .brand .l-navy{opacity:0}
+
+When I replaced the two images with the single new mark, that rule
+was left behind with nothing to swap to. So the only logo on the page
+was being hidden until you scrolled.
+
+Fixed by overriding it so the one mark stays visible in both states.
+
+
+AND THE LOGO IS NOW FULL SIZE ON THESE PAGES TOO
 --------------------------------------------------------------------
-  site.css   index.css   story.css   new-construction.css
-  Click INTO the css folder first - breadcrumb reads <repo> / css.
+Same root cause. These pages carry their own copy of the old header -
+an 84px bar with a 52px logo. The rest of the site moved to a 136px
+bar with a 124px mark some time ago, but that change lived in the
+shared stylesheet, which these pages never load. So the logo here was
+less than half the size it is on the homepage.
 
-DROP 3 — the  js  folder  (2 files)
+They now step through exactly the same sizes as every other page:
+
+    desktop        bar 136px   logo 124px
+    <= 1180px      bar 132px   logo 106px
+    <= 430px       bar 126px   logo  98px
+    <= 340px       bar 108px   logo  82px
+
+The mobile menu offsets moved with it - pinned to the old 84px the
+menu would have opened underneath the header - and the banner gained
+the breathing room a taller bar needs, so no heading tucks under it.
+
+
+THE FIX — ONE DROP
 --------------------------------------------------------------------
-  site.js   actionbar.js
-  Click INTO the js folder first - breadcrumb reads <repo> / js.
+  contact.html
+  services.html
+  services-residential.html
+  services-commercial.html
+  services-lighting.html
+  services-panel-upgrades.html
 
-DROP 4 — the  images  folder  (14 files)
---------------------------------------------------------------------
-  the builder-*.webp logos
-  Click INTO the images folder first - breadcrumb reads <repo> / images.
-  Skip this drop if you have already uploaded the builder logos.
+  Top level of the repo. Add file > Upload files, drag all 6, commit.
 
-You can also select everything at once - the 32 files AND the css, js
-and images FOLDERS - and drag the lot in one go. GitHub keeps the
-folder names. Check the file list shows css/site.css and
-js/actionbar.js with the folder in front before you commit.
+services-repairs.html is not affected - it is the redirect stub and
+has no header.
 
+The other 25 pages are not affected either. They load the shared
+stylesheet, which never had that rule.
 
-AND ONE DELETION
---------------------------------------------------------------------
-  services-generators.html  - delete it from the repo root.
-  Nothing links to it any more.
-  On GitHub: open the file > three dots, top right > Delete file.
-
-
-=====================================================================
-WHAT IS NEW IN THIS BATCH
-=====================================================================
-
-RESIDENTIAL/REPAIRS & SERVICE
-  The label is now "Residential/Repairs & Service" with a slash,
-  everywhere it appears: the desktop dropdown, the burger menu, the
-  services page card, the page's own heading and its title tag. 43
-  places across 32 pages.
-
-  actionbar.js also corrects it at load on any page carrying an older
-  wording, so the menu is consistent even mid-upload.
-
-  It fits on one line in both the desktop dropdown and the burger
-  menu - no wrapping at any width.
-
-
-ALSO IN HERE, FROM EARLIER TODAY
---------------------------------------------------------------------
-  * the floating Book Online button - no navy bar, red pill with a
-    slow drifting aura, solid navy second button
-  * the seven legacy pages brought in line: new logo as a file rather
-    than two base64 images, current palette, corrected menu, Book
-    Online in the header, floating button. ~337KB down to ~239KB each
-  * services.html - seven cards to five, Generators gone, Residential
-    and Repairs merged, renumbered
-  * services-residential.html - both sets of work on one page
-  * services-repairs.html - now a redirect, so old links still land
-  * services-commercial.html - "Talk to the team", call + email
-  * contact.html - Email us split three ways
-  * the 14 builder logos, the rebuilt Our Story page, the taller
-    phone header, the hero points
-
-
-!! STILL NEEDED FROM CHRIS !!
---------------------------------------------------------------------
-Two contact addresses. Residential and Commercial both point at
-service@elite1314.com until they arrive; Careers goes to jennifer@.
-Nothing is broken, but the split is only doing half its job.
-
-In contact.html, search for "Email us, split by enquiry type" - the
-three lines are directly beneath that comment.
+These same 6 files have also been updated inside UPLOAD-FINAL, so if
+you would rather re-upload that whole folder it is already correct.
