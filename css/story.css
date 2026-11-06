@@ -24,16 +24,16 @@
 @media (prefers-reduced-motion:reduce){.play::before{animation:none}}
 @media (max-width:900px){.story-in{grid-template-columns:1fr;gap:34px}}
 .htl{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:40px;position:relative}
-.htl::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--blue),var(--orange))}
+.htl::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--blue),var(--accent))}
 .ht{position:relative;padding-top:38px}
 .ht::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--blue)}
-.ht:last-child::before{background:var(--orange);border-color:var(--orange-deep)}
-.ht .yr{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--orange-deep)}
+.ht:last-child::before{background:var(--accent);border-color:var(--accent-deep)}
+.ht .yr{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--accent-deep)}
 .ht h3{font-weight:800;font-size:20px;margin:10px 0 8px;letter-spacing:-.01em}
 .ht p{color:var(--muted);margin:0;font-size:14.5px;line-height:1.55}
 @media (max-width:860px){
   .htl{grid-template-columns:1fr;gap:0;margin-top:40px;padding-left:34px}
-  .htl::before{left:6px;right:auto;top:6px;bottom:6px;width:2px;height:auto;background:linear-gradient(180deg,var(--blue),var(--orange))}
+  .htl::before{left:6px;right:auto;top:6px;bottom:6px;width:2px;height:auto;background:linear-gradient(180deg,var(--blue),var(--accent))}
   .ht{padding:0 0 40px 6px}
   .ht::before{left:-34px;top:3px}
 }
@@ -49,7 +49,7 @@
 .tcard2 .go{font-family:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:gap .2s}
 @media (max-width:820px){.tcards{grid-template-columns:1fr}}
 .why{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
-.wcard .wi{width:50px;height:50px;border-radius:14px;background:rgba(11,99,224,.10);border:1px solid rgba(11,99,224,.22);display:grid;place-items:center;color:var(--orange-deep);margin-bottom:20px}
+.wcard .wi{width:50px;height:50px;border-radius:14px;background:rgba(11,99,224,.10);border:1px solid rgba(11,99,224,.22);display:grid;place-items:center;color:var(--accent-deep);margin-bottom:20px}
 @media (max-width:900px){.why{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.why{grid-template-columns:1fr}}
 @media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
@@ -85,13 +85,50 @@
   font-weight:500;letter-spacing:-.012em;margin:0 0 20px;max-width:30ch}
 .st-open p{color:var(--muted);font-size:16.5px;line-height:1.72;margin:0 0 16px;max-width:62ch}
 .st-open p:last-child{margin-bottom:0}
-.st-founders{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.st-founder{display:inline-flex;align-items:center;gap:9px;padding:9px 16px 9px 10px;
-  border:1px solid var(--hair);border-radius:100px;background:#fff;
-  font-size:14px;font-weight:600;color:var(--blue-deep)}
-.st-founder .ini{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
-  background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.02em}
-.st-founder .st-role{font-weight:400;color:var(--muted);font-size:13px}
+/* Three founders now, not two, and all three on one row. Side by side at
+   the old size they ran to 670px in a 520px column and wrapped 2-then-1,
+   which reads as a mistake rather than a list. The role moves under the
+   name inside each pill instead of sitting beside it, which is what buys
+   the width back - nothing is dropped, the pill is just two lines deep. */
+.st-founders{display:flex;flex-wrap:nowrap;align-items:stretch;
+  gap:clamp(6px,1vw,9px);margin-top:26px}
+.st-founder{display:flex;flex-wrap:wrap;align-items:center;
+  gap:0 8px;min-width:0;flex:0 1 auto;
+  padding:8px 13px 8px 8px;
+  border:1px solid var(--hair);border-radius:16px;background:#fff;
+  font-size:clamp(11.5px,1.05vw,13.5px);font-weight:600;color:var(--blue-deep);
+  line-height:1.25;white-space:nowrap}
+.st-founder .ini{flex:none;width:clamp(21px,2vw,26px);height:clamp(21px,2vw,26px);
+  border-radius:50%;display:grid;place-items:center;
+  background:var(--blue);color:#fff;font-size:clamp(9px,.85vw,10.5px);
+  font-weight:800;letter-spacing:.02em}
+/* flex-basis:100% drops the role onto its own line inside the pill; the
+   left padding lines it up under the name rather than under the circle */
+.st-founder .st-role{flex:0 0 100%;font-weight:400;color:var(--muted);
+  font-size:clamp(9px,.82vw,10.5px);letter-spacing:.01em;
+  padding-left:calc(clamp(21px,2vw,26px) + 8px)}
+
+/* On a phone the three pills filled the row to the last pixel - the names
+   sat hard against the edges and it read as squashed rather than tidy.
+   Below 560px they become three equal cards with the circle on top and the
+   name under it, which is a shape that fits the width instead of fighting
+   it. Still one row. */
+@media (max-width:560px){
+  .st-founders{gap:7px}
+  .st-founder{flex:1 1 0;min-width:0;
+    flex-direction:column;align-items:center;justify-content:flex-start;
+    gap:6px;padding:11px 6px 10px;border-radius:14px;
+    text-align:center;white-space:normal;
+    font-size:11.5px;line-height:1.3}
+  .st-founder .ini{width:26px;height:26px;font-size:10px}
+  .st-founder .st-role{flex:0 0 auto;padding-left:0;font-size:9.5px}
+}
+@media (max-width:360px){
+  .st-founders{gap:5px}
+  .st-founder{padding:10px 4px 9px;font-size:10.5px}
+  .st-founder .ini{width:23px;height:23px;font-size:9px}
+  .st-founder .st-role{font-size:8.6px}
+}
 
 /* the shared .video-card is built for a wide band, so it is reined in here */
 .st-video{margin:0}
@@ -132,6 +169,30 @@
 .st-fig span{display:block;margin-top:10px;font-family:"Space Mono",ui-monospace,Consolas,monospace;
   font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);line-height:1.5}
 
+/* Four across a phone is 80-odd pixels a column, so the numbers and the
+   labels both have to come down, and the <br> in each label has to go -
+   "SOUTHWEST FLORIDA" will not sit on one line that narrow, but it wraps
+   happily once it is allowed to. */
+@media (max-width:820px){
+  .st-fig{padding:18px 10px}
+  .st-fig b{font-size:clamp(21px,4.4vw,32px)}
+  .st-fig span{margin-top:7px;font-size:9px;letter-spacing:.07em;line-height:1.45}
+  /* the break is dropped so the label wraps to the column instead of
+     being forced into two fixed lines. The markup carries a real space
+     in front of it, or the two halves would run together. */
+  .st-fig span br.st-br{display:none}
+}
+@media (max-width:560px){
+  .st-fig{padding:15px 7px}
+  .st-fig b{font-size:clamp(17px,4.9vw,24px);letter-spacing:-.04em}
+  .st-fig span{margin-top:6px;font-size:7.6px;letter-spacing:.03em;line-height:1.4}
+}
+@media (max-width:360px){
+  .st-fig{padding:13px 5px}
+  .st-fig b{font-size:16px}
+  .st-fig span{font-size:7px;letter-spacing:.01em}
+}
+
 /* ── 4. growth + timeline ────────────────────────────────────────────────── */
 .st-growth{padding:clamp(54px,7vw,92px) 0 clamp(40px,5vw,60px)}
 .st-growth .section-head{max-width:none}
@@ -160,6 +221,8 @@
 .st-ev h3{margin:0 0 7px;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   font-weight:800;font-size:clamp(18px,1.9vw,21px);letter-spacing:-.018em;color:var(--ink-blue)}
 .st-ev p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.68;max-width:58ch}
+/* the 2024 entry runs to two paragraphs; p has no margin, so space them here */
+.st-ev p + p{margin-top:11px}
 
 /* ── 5. principles ───────────────────────────────────────────────────────── */
 .st-close{background:var(--soft);padding:clamp(56px,7vw,92px) 0}
@@ -179,6 +242,13 @@
 .st-val h3{margin:0 0 5px;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   font-weight:800;font-size:17px;letter-spacing:-.012em;color:var(--ink-blue)}
 .st-val p{margin:0;font-size:14.5px;line-height:1.6;color:var(--muted);max-width:none}
+
+/* The values become a swipe strip on a phone - the markup carries
+   data-strip and the shared rules in site.css do the rest. The only thing
+   left here is to keep a card in the strip from lifting on hover. */
+[data-strip].is-strip > .st-val:hover{transform:none;box-shadow:none;border-color:var(--hair)}
+}
+}
 
 /* ── 6. mission line ─────────────────────────────────────────────────────── */
 .st-mission{padding:clamp(54px,7vw,88px) 0}
@@ -205,9 +275,9 @@
 @media (max-width:980px){
   .st-open-in,.st-close-in{grid-template-columns:1fr}
   .st-video{order:-1}
-  .st-figs-in{grid-template-columns:1fr 1fr}
-  .st-fig:nth-child(odd){border-left:0}
-  .st-fig:nth-child(n+3){border-top:1px solid var(--hair)}
+  /* the four figures stay on one row at every width. Two-up and then
+     one-up turned four short numbers into a column half a screen tall,
+     and they are a glance, not a read. */
 }
 @media (max-width:980px){
   .st-quote .wrap{grid-template-columns:1fr;gap:30px;align-items:start}
@@ -220,9 +290,7 @@
   .st-mission p{max-width:none}
 }
 @media (max-width:460px){
-  .st-figs-in{grid-template-columns:1fr}
-  .st-fig{border-left:0}
-  .st-fig+.st-fig{border-top:1px solid var(--hair)}
+  .st-fig{padding:14px 7px}
   .st-val{grid-template-columns:1fr;gap:14px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -247,6 +315,7 @@
 .st-tl .st-ev:nth-child(4){transition-delay:.68s}
 .st-tl .st-ev:nth-child(5){transition-delay:.82s}
 .st-tl .st-ev:nth-child(6){transition-delay:.96s}
+.st-tl .st-ev:nth-child(7){transition-delay:1.10s}
 
 .st-ev::before{transform:scale(0);
   transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
