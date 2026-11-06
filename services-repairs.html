@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Repairs &amp; Service | Elite Electrical Contractors</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://eliteelectricswfl.com/services-residential.html">
+<link rel="canonical" href="https://elite1314.com/services-residential.html">
 <meta http-equiv="refresh" content="0; url=services-residential.html">
 <script>location.replace('services-residential.html');</script>
 <style>
@@ -18,6 +18,58 @@
   header.scrolled .menu .nav-dd .dd a{color:var(--muted)}
   header.scrolled .menu .nav-dd .dd a:hover{color:var(--blue)}
   header.scrolled .nav-dd .dd{border-left-color:rgba(13,24,48,.14)}
+}
+
+
+/* ── the Book Online button ──────────────────────────────────────────────
+   One look for every Book Online on the site. It used to live in
+   index.css, so only the homepage hero had it; every other page fell back
+   to a plain red pill. Moved here so the button is the same wherever it
+   appears. Seven pages carry their own stylesheet and never load this
+   file, so the same block is repeated in each of them.                    */
+.hl-primary{background:var(--red);color:#fff;position:relative;overflow:hidden;
+  border:2px solid #fff;
+  transform-origin:50% 65%;
+  animation:hlNudge 3.6s ease-in-out infinite,
+            hlHalo  3.6s ease-in-out infinite}
+.hl-primary::after{content:"";position:absolute;top:-60%;bottom:-60%;left:0;width:42%;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 50%,
+             rgba(255,255,255,0) 100%);
+  transform:translateX(-170%) skewX(-18deg);
+  animation:hlShine 3.6s ease-in-out infinite;
+  pointer-events:none}
+@keyframes hlShine{
+  0%,54%  {transform:translateX(-170%) skewX(-18deg)}
+  88%,100%{transform:translateX(400%)  skewX(-18deg)}}
+@keyframes hlHalo{
+  0%,58%,100%{box-shadow:0 8px 24px rgba(16,28,58,.20),
+                         0 0 24px 6px rgba(118,130,152,.34)}
+  72%        {box-shadow:0 12px 34px rgba(16,28,58,.28),
+                         0 0 52px 20px rgba(118,130,152,.62)}}
+@keyframes hlNudge{
+  0%,58%,100%{transform:rotate(0) scale(1)}
+  63%{transform:rotate(-2.6deg) scale(1.045)}
+  68%{transform:rotate(2.4deg)  scale(1.050)}
+  73%{transform:rotate(-1.8deg) scale(1.034)}
+  78%{transform:rotate(1.2deg)  scale(1.020)}
+  83%{transform:rotate(-.6deg)  scale(1.008)}
+  88%{transform:rotate(0) scale(1)}}
+/* animation:none rather than play-state:paused - a paused animation keeps
+   hold of transform, so the lift on hover would never apply */
+.hl-primary:hover,.hl-primary:focus-visible{background:var(--red-deep);color:#fff;
+  border-color:#fff;animation:none;transform:translateY(-3px);
+  box-shadow:0 16px 36px rgba(16,28,58,.26),
+             0 0 46px 16px rgba(118,130,152,.58)}
+.hl-primary:hover::after{animation:none;opacity:0}
+.hl-primary svg{transition:transform .2s}
+.hl-primary:hover svg{transform:translateX(4px)}
+/* the shine, the halo and the nudge are all decoration; anyone who has
+   asked their system for less motion gets the plain button */
+@media (prefers-reduced-motion:reduce){
+  .hl-primary{animation:none;transform:none}
+  .hl-primary::after{display:none}
+  .hl-primary:hover{transform:none}
+  .hl-primary svg{transition:none}
 }
 </style>
 </head>
